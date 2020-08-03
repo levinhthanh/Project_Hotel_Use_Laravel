@@ -1,0 +1,17 @@
+.add_employee{
+    width: 60% !important;
+    margin: auto !important;
+}
+#label_add{
+    color: darkred;
+    padding: 1vw;padding-left: 2vw;
+    border-bottom: solid 1px dimgray;
+}
+#button_admin{
+    color: white !important;
+    background-color: darkorange !important;
+}
+#button_admin:hover{
+    color: white !important;
+    background-color: blue !important;
+}
