@@ -17,21 +17,29 @@ class AdminController extends Controller
 
     public function list_employee()
     {
-        return view('admin.list_employee');
-    }
-
-    public function get_employee()
-    {
         $employees = Employee::all();
         foreach ($employees as $key => $value) {
            $user_id = $value->user_id;
            $user = User::where('id', $user_id)->first();
-           $value->id = $user->id;
+        //    $value->id = $user->id;
            $value->name = $user->name;
            $value->email = $user->email;
            $value->deleted = $user->deleted;
         }
-        return response()->array($employees);
+        return view('admin.list_employee', compact('employees'));
+    }
+
+    public function get_employee()
+    {
+        // $employees = Employee::all();
+        // foreach ($employees as $key => $value) {
+        //    $user_id = $value->user_id;
+        //    $user = User::where('id', $user_id)->first();
+        //    $value->name = $user->name;
+        //    $value->email = $user->email;
+        //    $value->deleted = $user->deleted;
+        // }
+        // return view('admin.list_employee', compact('employees'));
     }
 
     public function validate_employee(EmployeeRequest $request)

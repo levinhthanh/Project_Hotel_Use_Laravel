@@ -58,11 +58,11 @@
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Chức vụ</label>
                     <select class="form-control" id="exampleFormControlSelect1" name="possition">
-                        <option value="tieptan">Tiếp tân</option>
-                        <option value="quanly">Quản lý</option>
-                        <option value="vesinh">Nhân viên vệ sinh</option>
-                        <option value="baove">Nhân viên bảo vệ</option>
-                        <option value="it">Nhân viên IT</option>
+                        <option value="Tiếp tân">Tiếp tân</option>
+                        <option value="Quản lý">Quản lý</option>
+                        <option value="Vệ sinh">Nhân viên vệ sinh</option>
+                        <option value="Bảo vệ">Nhân viên bảo vệ</option>
+                        <option value="IT">Nhân viên IT</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -72,9 +72,9 @@
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Mức truy cập</label>
                     <select name="role" class="form-control" id="exampleFormControlSelect1">
-                        <option value="none">Không được truy cập</option>
-                        <option value="high">Mức thấp</option>
-                        <option value="low">Mức cao</option>
+                        <option value="Không">Không được truy cập</option>
+                        <option value="Cao">Mức thấp</option>
+                        <option value="Thấp">Mức cao</option>
                     </select>
                 </div>
                 <div class="form-group">

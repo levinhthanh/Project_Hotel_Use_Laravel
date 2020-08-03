@@ -27,10 +27,10 @@ class EmployeeSeeder extends Seeder
             'birthday' => '1984-01-19',
             'address' => 'Nghệ An, Việt Nam',
             'phone' => '0905555000',
-            'possition' => 'quanly',
+            'possition' => 'Quản lý',
             'salary' => '10000000',
-            'role' => 'high',
-            'image' => 'vinh.jpg',
+            'role' => 'Cao',
+            'image' => 'images/vinh.jpg',
             'user_id' => 2
         ]);
     }

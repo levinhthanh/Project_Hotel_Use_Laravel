@@ -19,9 +19,9 @@ class CreateEmployeesTable extends Migration
             $table->date('birthday');
             $table->string('address',1000);
             $table->string('phone',10);
-            $table->enum('possition', ['tieptan', 'quanly','baove', 'vesinh','it']);
+            $table->enum('possition', ['Tiếp tân', 'Quản lý','Bảo vệ', 'Vệ sinh','IT']);
             $table->string('salary');
-            $table->enum('role', ['none','low','high']);
+            $table->enum('role', ['Không','Thấp','Cao']);
             $table->string('image');
             $table->boolean('deleted')->default(false);
 
