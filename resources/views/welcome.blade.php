@@ -51,7 +51,7 @@
     <div class="main_view">
         <div class="directions">
             <div class="label_home">
-                <a id="a_color" href="">My-Hotel</a>
+                <a id="a_color" href="">Relax-Hotel</a>
             </div>
             <div class="drop_menu">
                 <i onclick="show_menu()" id="dropdown_menu" class="fas fa-align-justify"></i>
@@ -87,7 +87,7 @@
             </div>
         </div>
         <div class="welcome" id="welcome_block">
-            <h1 id="label_welcome">Welcome to My hotel</h1>
+            <h1 id="label_welcome">Welcome to Relax Hotel</h1>
             <p id="p_welcome">Rất hân hạnh được tiếp đón quý khách!</p>
         </div>
         <form action="" method="post" class="book_room" id="book_block">

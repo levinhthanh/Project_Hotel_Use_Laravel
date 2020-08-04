@@ -5,11 +5,20 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EmployeeRequest;
 use App\User;
 use App\Employee;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Repositories\Employee\EmployeeRepositoryInterface;
+use App\Repositories\User\UserRepositoryInterface;
 
 class AdminController extends Controller
 {
+    protected $employeeRepository;
+    protected $userRepository;
+
+    public function __construct(EmployeeRepositoryInterface $employeeRepository, UserRepositoryInterface $userRepository )
+    {
+        $this->employeeRepository = $employeeRepository;
+        $this->userRepository = $userRepository;
+    }
+
     public function add_employee()
     {
         return view('admin.add_employee');
@@ -17,20 +26,12 @@ class AdminController extends Controller
 
     public function list_employee()
     {
-        $employees = Employee::all();
-        foreach ($employees as $key => $value) {
-           $user_id = $value->user_id;
-           $user = User::where('id', $user_id)->first();
-        //    $value->id = $user->id;
-           $value->name = $user->name;
-           $value->email = $user->email;
-           $value->deleted = $user->deleted;
-        }
+        $employees = $this->employeeRepository->getInformations();
         return view('admin.list_employee', compact('employees'));
     }
 
-    public function get_employee()
-    {
+    // public function get_employee()
+    // {
         // $employees = Employee::all();
         // foreach ($employees as $key => $value) {
         //    $user_id = $value->user_id;
@@ -40,7 +41,13 @@ class AdminController extends Controller
         //    $value->deleted = $user->deleted;
         // }
         // return view('admin.list_employee', compact('employees'));
-    }
+        // $employees = $this->employeeRepository->getAll();
+        // foreach($employees as $key => $value){
+        //      $id = $value->id;
+        //      $this->userRepository->find($id);
+        // }
+
+    // }
 
     public function validate_employee(EmployeeRequest $request)
     {

@@ -55,7 +55,7 @@
                                             <i onclick="show_edit()" style="color: gold" class="fas fa-edit"></i>
                                             <div class="modal fade" id="dialog1" role="dialog" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
+                                                    <div class="modal-content body_edit">
 
                                                         <div class="modal-header">
                                                             <h5 class="modal-title">Chỉnh sửa nhân viên</h5>
@@ -69,8 +69,16 @@
 
                                                             <table class="table table-striped text-center">
                                                                 <tr>
+                                                                    <th>Ảnh</th>
+                                                                    <td>
+                                                                        <input type="file" name="image" class="form-control-file" required>
+                                                                    </td>
+                                                                    <th>
+                                                                        <button type="button" class="btn btn-primary">Cập nhật</button>
+                                                                    </th>
+                                                                </tr>
+                                                                <tr>
                                                                     <th>Tên</th>
-                                                                    <td>{{ $employee->name }}</td>
                                                                     <td><input class="form-control text-center" type="text" name="name" value="{{ $employee->name }}"></td>
                                                                     <th>
                                                                         <button type="button" class="btn btn-primary">Cập nhật</button>
@@ -78,7 +86,6 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Ngày sinh</th>
-                                                                    <td>{{ $employee->birthday }}</td>
                                                                     <td><input class="form-control text-center" type="date" name="birthday" value="{{ $employee->birthday }}"></td>
                                                                     <th>
                                                                         <button type="button" class="btn btn-primary">Cập nhật</button>
@@ -86,7 +93,6 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Địa chỉ</th>
-                                                                    <td>{{ $employee->address }}</td>
                                                                     <td><input class="form-control text-center" type="text" name="address" value="{{ $employee->address }}"></td>
                                                                     <th>
                                                                         <button type="button" class="btn btn-primary">Cập nhật</button>
@@ -94,7 +100,6 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th>SĐT</th>
-                                                                    <td>{{ $employee->phone }}</td>
                                                                     <td><input class="form-control text-center" type="text" name="phone" value="{{ $employee->phone }}"></td>
                                                                     <th>
                                                                         <button type="button" class="btn btn-primary">Cập nhật</button>
@@ -102,7 +107,6 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Chức vụ</th>
-                                                                    <td>{{ $employee->possition }}</td>
                                                                     <td>
                                                                         <select class="form-control" id="exampleFormControlSelect1" name="possition">
                                                                             <option value="Tiếp tân">Tiếp tân</option>
@@ -117,8 +121,37 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Lương</th>
-                                                                    <td>{{ $employee->salary }}</td>
                                                                     <td><input class="form-control text-center" type="text" name="salary" value="{{ $employee->salary }}"></td>
+                                                                    <th>
+                                                                        <button type="button" class="btn btn-primary">Cập nhật</button>
+                                                                    </th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Mức truy cập</th>
+                                                                    <td>
+                                                                        <select class="form-control" id="exampleFormControlSelect1" name="role">
+                                                                            <option value="Không">Không</option>
+                                                                            <option value="Cao">Cao</option>
+                                                                            <option value="Thấp">Thấp</option>
+                                                                        </select>  </td>
+                                                                    <th>
+                                                                        <button type="button" class="btn btn-primary">Cập nhật</button>
+                                                                    </th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Email</th>
+                                                                    <td><input class="form-control text-center" type="text" name="email" value="{{ $employee->email }}"></td>
+                                                                    <th>
+                                                                        <button type="button" class="btn btn-primary">Cập nhật</button>
+                                                                    </th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Trạng thái</th>
+                                                                    <td>
+                                                                        <select class="form-control" id="exampleFormControlSelect1" name="deleted">
+                                                                            <option value="true">Hoạt động</option>
+                                                                            <option value="false">Đã khóa</option>
+                                                                        </select>  </td>
                                                                     <th>
                                                                         <button type="button" class="btn btn-primary">Cập nhật</button>
                                                                     </th>

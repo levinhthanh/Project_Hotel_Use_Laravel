@@ -12,7 +12,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        User::create(['name' => 'Admin Lê Vĩnh Thành','email' => 'admin', 'password' =>  bcrypt('admin'), 'type' => 'admin']);
+        User::create(['name' => 'Admin Lê Vĩnh Thành','email' => 'admin@gmail.com', 'password' =>  bcrypt('admin'), 'type' => 'admin']);
         User::create(['name' => 'Lê Công Vinh','email' => 'lecongvinh@gmail.com', 'password' =>  bcrypt('lecongvinh'), 'type' => 'employee']);
     }
 }
