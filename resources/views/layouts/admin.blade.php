@@ -6,26 +6,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Import Bootstrap and JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-    </script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
-    </script>
-
-    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('libs/node_modules/bootstrap/dist/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js">
-    </script>
-    {{-- Font Awesome --}}
     <link rel="stylesheet" href="{{ asset('css/fontawesome/css/all.css') }}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('vendor/dist/css/adminlte.min.css') }}">
-    <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('/css/admin.css') }}">
-    <!-- AdminLTE App -->
-    <script src="{{ asset('vendor/dist/js/adminlte.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('vendor/dist/css/adminlte.min.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -195,30 +181,12 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item">
+                            <a href="{{ route('manager_employee') }}" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    Quản lý nhân viên
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
+                                <p>Quản lý nhân viên</p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('list_employee') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Danh sách nhân viên</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('add_employee') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Thêm mới nhân viên</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
-
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
@@ -340,6 +308,16 @@
         @yield('content')
 
     </div>
+    <script src="{{ asset('libs/node_modules/jquery/dist/jquery.js') }}"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="{{ asset('libs/node_modules/bootstrap/dist/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('libs/node_modules/jquery-validation/dist/jquery.validate.js') }}"></script>
+    <script src="{{ asset('libs/node_modules/bootbox/bootbox.js') }}"></script>
+    <script src="{{ asset('js/employee.js') }}"></script>
+    <script src="{{ asset('js/admin.js') }}"></script>
+    <script src="{{ asset('vendor/dist/js/adminlte.js') }}"></script>
 </body>
 
 @stack('scripts')

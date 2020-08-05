@@ -12,25 +12,36 @@ class EmployeeSeeder extends Seeder
      */
     public function run()
     {
-        // DB::table('employees')->insert([
-        //     'birthday' => '1992-08-19',
-        //     'address' => 'Huế, Việt Nam',
-        //     'phone' => '0905555555',
-        //     'possition' => 'quanly',
-        //     'salary' => '10000000',
-        //     'role' => 'high',
-        //     'image' => 'vinh.jpg',
-        //     'user_id' => 1
-        // ]);
-
         DB::table('employees')->insert([
             'birthday' => '1984-01-19',
+            'gender' => 'Nam',
             'address' => 'Nghệ An, Việt Nam',
             'phone' => '0905555000',
             'possition' => 'Quản lý',
             'salary' => '10000000',
-            'role' => 'Cao',
             'image' => 'images/vinh.jpg',
+            'user_id' => 2
+        ]);
+
+        DB::table('employees')->insert([
+            'birthday' => '1994-05-19',
+            'gender' => 'Nam',
+            'address' => 'Huế, Việt Nam',
+            'phone' => '0905200200',
+            'possition' => 'Tiếp tân',
+            'salary' => '8000000',
+            'image' => 'images/vinhboss.jpg',
+            'user_id' => 2
+        ]);
+
+        DB::table('employees')->insert([
+            'birthday' => '1999-05-30',
+            'gender' => 'Nam',
+            'address' => 'Huế, Việt Nam',
+            'phone' => '0912321123',
+            'possition' => 'IT',
+            'salary' => '8000000',
+            'image' => 'images/thanh.png',
             'user_id' => 2
         ]);
     }

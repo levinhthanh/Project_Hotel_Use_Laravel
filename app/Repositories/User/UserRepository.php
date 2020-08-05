@@ -21,18 +21,13 @@ class UserRepository extends EloquentRepository implements UserRepositoryInterfa
      * Lấy thông tin nhân viên từ 2 bảng employees và users
      * @return mixed
      */
-    // public function getInformations()
-    // {
-    //     $employees = Employee::all();
-    //     foreach ($employees as $key => $value) {
-    //        $user_id = $value->user_id;
-    //        $user = User::where('id', $user_id)->first();
-
-    //        $value->name = $user->name;
-    //        $value->email = $user->email;
-    //        $value->deleted = $user->deleted;
-    //     }
-    //     return $employees;
-    //  }
+    public function exist_email($email){
+        $check = User::where('email', $email)->first();
+        if($check){
+             return true;
+        }else{
+            return false;
+        }
+    }
 
 }

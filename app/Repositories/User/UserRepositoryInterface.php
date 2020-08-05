@@ -4,8 +4,8 @@ namespace App\Repositories\User;
 interface UserRepositoryInterface
 {
     /**
-     * Lấy thông tin nhân viên từ 2 bảng employees và users
+     * Kiểm tra email đã tồn tại hay chưa?
      * @return mixed
      */
-    // public function getInformations();
+    public function exist_email($email);
 }

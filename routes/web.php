@@ -26,10 +26,12 @@ Route::prefix('/admin')->group(function () {
             //page lỗi
         }
     })->name('admin_page');
-    Route::get('/employee/add', 'AdminController@add_employee')->name('add_employee');
-    Route::get('/employee/list', 'AdminController@list_employee')->name('list_employee');
-    Route::post('/employee/add', 'AdminController@validate_employee')->name('validate_employee');
-    Route::get('/get_employee', 'AdminController@get_employee')->name('get_employee');
+    Route::get('/employee', 'AdminController@manager_employee')->name('manager_employee');
+
+    // Route::get('/employee/add', 'AdminController@add_employee')->name('add_employee');
+    // Route::get('/employee/list', 'AdminController@list_employee')->name('list_employee');
+    // Route::post('/employee/add', 'AdminController@validate_employee')->name('validate_employee');
+    // Route::get('/get_employee', 'AdminController@get_employee')->name('get_employee');
 });
 
 
