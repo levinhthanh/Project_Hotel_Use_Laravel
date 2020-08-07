@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Http\Requests\EmployeeRequest;
 use App\User;
-use App\Employee;
+use App\Http\Requests\EmployeeRequest;
 use App\Repositories\Employee\EmployeeRepositoryInterface;
 use App\Repositories\User\UserRepositoryInterface;
 
@@ -19,74 +17,66 @@ class AdminController extends Controller
         $this->userRepository = $userRepository;
     }
 
-    public function manager_employee(){
+    public function manager_employee()
+    {
+
         return view('admin.employee');
     }
 
-    public function get_employees(){
+    public function get_employees()
+    {
         $employees = $this->employeeRepository->getInformations();
+
         return response()->json($employees);
     }
 
-    // public function list_employee()
-    // {
-    //     $employees = $this->employeeRepository->getInformations();
-    //     return view('admin.list_employee', compact('employees'));
-    // }
+    public function validate_employee(EmployeeRequest $request)
+    {
+        $email = $request->email;
+        $user = $this->userRepository;
+        if ($user->exist_email($email)) {
+            $message = "Email đã tồn tại!";
+            return response()->json($message);
+        }
+        else {
 
-    // public function get_employee()
-    // {
-    // $employees = Employee::all();
-    // foreach ($employees as $key => $value) {
-    //    $user_id = $value->user_id;
-    //    $user = User::where('id', $user_id)->first();
-    //    $value->name = $user->name;
-    //    $value->email = $user->email;
-    //    $value->deleted = $user->deleted;
-    // }
-    // return view('admin.list_employee', compact('employees'));
-    // $employees = $this->employeeRepository->getAll();
-    // foreach($employees as $key => $value){
-    //      $id = $value->id;
-    //      $this->userRepository->find($id);
-    // }
+            $name = $request->name;
+            $password = $request->password;
+            $password = bcrypt($password);
+            $this->userRepository->create(['name' => $name,'email' => $email, 'password' =>  $password, 'type' => 'employee']);
 
-    // }
+            $birthday = $request->birthday;
+            $gender = $request->gender;
+            $address = $request->address;
+            $phone = $request->phone;
+            $possition = $request->possition;
+            $salary = $request->salary;
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $path = $image->store('images', 'public');
+                $image = $path;
+            }
+            $user_id = User::select('id')->where('email', $email)->first();
+            $employee = ['birthday'=>$birthday,'gender'=>$gender,'address'=>$address,'phone'=>$phone,
+            'possition'=>$possition,'salary'=>$salary,'image'=>$image,'user_id'=>$user_id];
+            $this->employeeRepository->create($employee);
 
-    // public function validate_employee(EmployeeRequest $request)
-    // {
-    //     $email = $request->email;
-    //     $user = $this->userRepository;
-    //     if ($user->exist_email($email)) {
-    //         $error = "Email đã tồn tại!";
-    //         return view('admin.add_employee', compact('error'));
-    //     }
-    //     else {
-    //         $name = $request->name;
-    //         $password = $request->password;
-    //         $password = bcrypt($password);
-    //         $user->create(['name' => $name, 'email' => $email, 'password' => $password, 'type' => 'employee']);
+
 
             // $employee = new Employee();
             // $user_id = User::select('id')->where('email', $email)->first();
             // $employee->user_id = $user_id->id;
-            // $employee->birthday = $request->birthday;
-            // $employee->address = $request->address;
-            // $employee->phone = $request->phone;
-            // $employee->possition = $request->possition;
-            // $employee->salary = $request->salary;
-            // $employee->role = $request->role;
-            // if ($request->hasFile('image')) {
-            //     $image = $request->file('image');
-            //     $path = $image->store('images', 'public');
-            //     $employee->image = $path;
-            // }
+
+
             // $employee->save();
 
-    //         $success = " Đã thêm nhân viên thành công";
-    //         return view('admin.add_employee', compact('success'));
-    //     }
-    // }
+            $message = "Đã thêm nhân viên mới!";
+
+            return response()->json($message);
+        }
+    }
+
+
 
     // public function add_employee()
     // {

@@ -18,7 +18,7 @@ class UserRepository extends EloquentRepository implements UserRepositoryInterfa
     }
 
     /**
-     * Lấy thông tin nhân viên từ 2 bảng employees và users
+     * Kiểm tra tài khoản tồn tại hay chưa?
      * @return mixed
      */
     public function exist_email($email){

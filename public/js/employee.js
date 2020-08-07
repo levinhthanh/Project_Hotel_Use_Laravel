@@ -1,104 +1,128 @@
 var employee = employee || {};
 
-employee.showEmployees = function(){
+employee.showEmployees = function () {
     $.ajax({
-        url:"/api/employee",
-        method:"GET",
-        dataType:"json",
-        success : function(data){
+        url: "/api/employee",
+        method: "GET",
+        dataType: "json",
+        success: function (data) {
             $('#tbEmployee tbody').empty();
-            $.each(data, function(i, v){
-                // var avatar = (v.avatar != null && v.avatar != "") ? v.avatar : "images/nonavatar.png";
+            $.each(data, function (key, value) {
                 $('#tbEmployee tbody').append(
                     `<tr>
-                        <td>${v.id}</td>
-                        <td><img src="public/storage/${v.image}" style="width:60px; height: 70px;"></td>
-                        <td>${v.name}</td>
-                        <td>${v.birthday}</td>
-                        <td>${v.gender}</td>
-                        <td>${v.address}</td>
-                        <td>${v.phone}</td>
-                        <td>${v.possition}</td>
-                        <td>${v.salary}</td>
-                        <td>${v.email}</td>
-                        <td>${v.deleted}</td>
+                        <td>${value.id}</td>
+                        <td><img src="/${value.image}" style="width:60px; height: 70px;"></td>
+                        <td>${value.name}</td>
+                        <td>${value.birthday}</td>
+                        <td>${value.gender}</td>
+                        <td>${value.address}</td>
+                        <td>${value.phone}</td>
+                        <td>${value.possition}</td>
+                        <td>${value.salary}</td>
+                        <td>${value.email}</td>
+                        <td>${value.deleted}</td>
                         <td>
-                            <a href="javascript:;" class="btn btn-primary"
-                                    onclick="employee.get(${v.id})">Sửa</a>
-                            <a href="javascript:;" class="btn btn-danger"
-                                    onclick="employee.delete(${v.id})">Xóa</a>
+                            <a href="javascript:;" class="btn" style="color:#696969; background-color: #FFFF00 !important;"
+                                    onclick="employee.get(${value.id})">Sửa</a>
+                            <a href="javascript:;" class="btn mt-1" style="color:white; background-color: #990000 !important;"
+                                    onclick="employee.delete(${value.id})">Xóa</a>
                         </td>
                     </tr>`
                 )
             })
-console.log(data);
         }
     });
 };
 
-employee.openModal = function(){
+employee.openModal = function () {
     employee.reset();
     $("#addEditEmployee").modal('show');
 }
 
-// employee.save = function(){
-//     if($("#frmAddEditEmployee").valid()){
-//         //create
-//         if($("#EmployeeId").val() == 0){
-//             var createObj = {};
-//             createObj.fullName = $("#Fullname").val();
-//             createObj.gender = $("#Gender").val();
-//             createObj.dob = $("#DoB").val();
-//             createObj.address = $("#Address").val();
-//             createObj.avatar = $("#Avatar").attr("src");
+employee.save = function () {
+    if ($("#formAddEditEmployee").valid()) {
+        //create
+        if ($("#EmployeeId").val() == 0) {
 
-//             $.ajax({
-//                 url:"http://localhost:3000/employees",
-//                 method: "POST",
-//                 dataType:"json",
-//                 contentType:"application/json",
-//                 data : JSON.stringify(createObj),
-//                 success : function(){
-//                     $("#addEditEmployee").modal('hide');
-//                     bootbox.alert("Employee has been created success!");
-//                     employee.showEmployees();
-//                 }
-//             })
-//         }
-//         //update
-//         else{
-//             var updateObj = {};
-//             updateObj.id = $("#EmployeeId").val();
-//             updateObj.fullName = $("#Fullname").val();
-//             updateObj.gender = $("#Gender").val();
-//             updateObj.dob = $("#DoB").val();
-//             updateObj.address = $("#Address").val();
-//             updateObj.avatar = $("#Avatar").attr("src");
+            var createObj = {};
+            createObj.name = $("#name").val();
+            createObj.birthday = $("#birthday").val();
+            createObj.gender = $("#gender").val();
+            createObj.address = $("#address").val();
+            createObj.email = $("#email").val();
+            createObj.password = $("#password").val();
+            createObj.phone = $("#phone").val();
+            createObj.possition = $("#possition").val();
+            createObj.salary = $("#salary").val();
+            createObj.image = $("#image").prop("files")[0];
 
-//             $.ajax({
-//                 url:`http://localhost:3000/employees/${updateObj.id}`,
-//                 method: "PUT",
-//                 dataType:"json",
-//                 contentType:"application/json",
-//                 data : JSON.stringify(updateObj),
-//                 success : function(){
-//                     $("#addEditEmployee").modal('hide');
-//                     bootbox.alert("Employee has been updated success!");
-//                     employee.showEmployees();
-//                 }
-//             })
-//         }
+            $.ajax({
+                url: "/api/employee",
+                method: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify(createObj),
+                success: function (data) {
+                    document.getElementById('table_status').innerHTML = "";
+                    document.getElementById('create_status').style = 'display:block';
+                    if (data == 'Email đã tồn tại!') {
+                        $('#table_status').append(`<tr><td style="color:red;">- ${data}</td></tr>`);
+                    } else {
+                        // $('#table_status').append(`<tr><td style="color:green;">- ${data}</td></tr>`);
+                        $("#addEditEmployee").modal('hide');
+                        bootbox.alert(data);
+                        employee.showEmployees();
+                    }
 
-//     }
-// }
 
-employee.reset = function(){
+
+
+                },
+                error: function (data) {
+                    document.getElementById('table_status').innerHTML = "";
+                    document.getElementById('create_status').style = 'display:block';
+                    errors = data.responseJSON.errors;
+                    console.log(data.responseJSON.errors);
+                    $.each(errors, function (key, value) {
+                        $('#table_status').append(`<tr><td style="color:red;">- ${value}</td></tr>`)
+                    })
+                }
+            })
+        }
+        //update
+        // else{
+        //     var updateObj = {};
+        //     updateObj.id = $("#EmployeeId").val();
+        //     updateObj.fullName = $("#Fullname").val();
+        //     updateObj.gender = $("#Gender").val();
+        //     updateObj.dob = $("#DoB").val();
+        //     updateObj.address = $("#Address").val();
+        //     updateObj.avatar = $("#Avatar").attr("src");
+
+        //     $.ajax({
+        //         url:`http://localhost:3000/employees/${updateObj.id}`,
+        //         method: "PUT",
+        //         dataType:"json",
+        //         contentType:"application/json",
+        //         data : JSON.stringify(updateObj),
+        //         success : function(){
+        //             $("#addEditEmployee").modal('hide');
+        //             bootbox.alert("Employee has been updated success!");
+        //             employee.showEmployees();
+        //         }
+        //     })
+        // }
+
+    }
+}
+
+employee.reset = function () {
     $("#Fullname").val("");
     $("#Gender").val("");
     $("#DoB").val("");
     $("#Address").val("");
-    $("#addEditEmployee").find(".modal-title").text("Create new employee");
-    $("#addEditEmployee").find(".btn-success").text("Save");
+    $("#addEditEmployee").find(".modal-title").text("Thêm mới nhân viên");
+    $("#addEditEmployee").find(".btn-success").text("Thêm");
 }
 
 // employee.get = function(id){
@@ -152,18 +176,18 @@ employee.reset = function(){
 //     });
 // }
 
-// employee.uploadAvatar = function(element){
-//     var img = element.files[0];
-//     var reader = new FileReader();
-//     reader.onloadend = function() {
-//       $("#Avatar").attr("src",reader.result);
-//     }
-//     reader.readAsDataURL(img);
-// }
-employee.init = function(){
+employee.uploadAvatar = function (element) {
+    var img = element.files[0];
+    var reader = new FileReader();
+    reader.onloadend = function () {
+        $("#Avatar").attr("src", reader.result);
+    }
+    reader.readAsDataURL(img);
+}
+employee.init = function () {
     employee.showEmployees();
 };
 
-$(document).ready(function(){
+$(document).ready(function () {
     employee.init();
 });

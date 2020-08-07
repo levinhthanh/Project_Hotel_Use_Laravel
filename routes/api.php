@@ -20,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::prefix('/employee')->group(function () {
     Route::get('/', 'AdminController@get_employees')->name('employees_list');
+    Route::post('/', 'AdminController@validate_employee')->name('validate_employee');
 });

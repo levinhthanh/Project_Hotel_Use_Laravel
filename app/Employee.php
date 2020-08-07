@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-    protected $fillable = [
-        'birthday', 'address', 'phone', 'possition', 'salary', 'role', 'image', 'user_id'
-    ];
+    protected $guarded = [];
+
     public function user(){
-        return $this->belongsTo('User');
+
+        return $this->belongsTo('App\User', 'user_id');
       }
 }

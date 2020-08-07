@@ -24,11 +24,11 @@
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="" class="nav-link">Home</a>
+                    <div>
+                        <h2 style="color: darkred">@yield('title_content')</h2>
+                    </div>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
+
             </ul>
 
             <!-- Right navbar links -->
