@@ -8,4 +8,8 @@ interface EmployeeRepositoryInterface
      * @return mixed
      */
     public function getInformations();
+
+    public function getEmployee($id);
+
+    public function deleteEmployee($id);
 }

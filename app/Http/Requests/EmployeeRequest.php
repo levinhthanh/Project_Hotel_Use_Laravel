@@ -25,7 +25,8 @@ class EmployeeRequest extends FormRequest
     {
         return [
             'name' => 'required|min:2|max:30',
-            'phone' => 'required|numeric|regex:/[0][0-9]{9}/',
+            'birthday' => 'required|before:-18 years',
+            'phone' => 'required|numeric|regex:/^[0][0-9]{9}$/',
             'email' => 'required|email',
             'password' => [
                 'required',
@@ -36,7 +37,7 @@ class EmployeeRequest extends FormRequest
                 'regex:/[0-9]/',
                 'regex:/[@$!%*#?&]/',
             ],
-            'salary' => 'required|regex:/[0-9]{7,10}/',
+            'salary' => 'required|regex:/^[0-9]{7,10}$/',
             'address' => 'required',
 
         ];
@@ -48,6 +49,8 @@ class EmployeeRequest extends FormRequest
             'name.required' => 'Bạn cần phải nhập tên!',
             'name.min' => 'Tên ít nhất phải có 2 ký tự!',
             'name.max' => 'Tên không được quá 30 ký tự!',
+            'birthday.required' => 'Bạn cần phải nhập ngày sinh!',
+            'birthday.before' => 'Nhân viên phải đủ 18 tuổi!',
             'phone.required' => 'Bạn cần phải nhập điện thoại!',
             'phone.numeric' => 'Điện thoại phải bắt đầu bằng số 0!',
             'phone.regex' => 'Điện thoại chỉ được có 10 số',
@@ -62,6 +65,5 @@ class EmployeeRequest extends FormRequest
             'address.required' => 'Bạn chưa nhập địa chỉ!',
         ];
 
-        // return $messages;
     }
 }

@@ -23,7 +23,7 @@ class CreateEmployeesTable extends Migration
             $table->enum('possition', ['Tiếp tân', 'Quản lý','Bảo vệ', 'Vệ sinh','IT']);
             $table->string('salary');
             $table->string('image');
-            $table->boolean('deleted')->default(false);
+            $table->enum('status', ['Hoạt động','Đã xóa'])->default('Hoạt động');
 
             $table->timestamps();
         });

@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('type', ['admin','employee','customer']);
-            $table->boolean('deleted')->default(false);
+            $table->enum('type', ['Admin','Nhân viên','Khách hàng']);
+            $table->enum('status', ['Hoạt động','Đã xóa'])->default('Hoạt động');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -22,19 +22,32 @@ class EmployeeRepository extends EloquentRepository implements EmployeeRepositor
      * Lấy thông tin nhân viên từ 2 bảng employees và users
      * @return mixed
      */
+    public function getEmployee($id)
+    {
+        $employee = Employee::findOrFail($id);
+        $id = $employee->user_id;
+        $employee['name'] = User::find($id)->name;
+        $employee['email'] = User::find($id)->email;
+        $employee['status'] = User::find($id)->status;
+
+        return $employee;
+    }
+
+    public function deleteEmployee($id)
+    {
+        Employee::where('id', $id)->update(['status' => "Đã xóa"]);
+        $employee = Employee::findOrFail($id);
+        $id = $employee->user_id;
+        User::where('id', $id)->update(['status' => "Đã xóa"]);
+    }
 
     public function getInformations()
     {
-        $employees = Employee::select('id', 'birthday', 'gender', 'address', 'phone', 'possition', 'salary', 'image', 'user_id')->get();
+        $employees = Employee::select('id', 'birthday', 'gender', 'address', 'phone', 'possition', 'salary', 'image', 'user_id')->where('status','Hoạt động')->get();
         foreach ($employees as $key => $value) {
             $user_id = $value->user_id;
             $value['name'] = User::find($user_id)->name;
             $value['email'] = User::find($user_id)->email;
-            if ($value['deleted'] = User::find($user_id)->deleted == 0) {
-                $value['deleted'] = 'Hoạt động';
-            } else {
-                $value['deleted'] = 'Bị chặn';
-            }
         }
 
         return $employees;

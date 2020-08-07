@@ -27,14 +27,14 @@
                         Hi,<span id="user_name">{{ Auth::user()->name }}</span>
                         <i class="fas fa-circle" id="user_status"></i>
                     </label>
-                    @if(Auth::user()->type === 'admin')
+                    @if(Auth::user()->type === 'Admin')
                         <a class="dropdown-item" id="account_control" href="{{ route('admin_page') }}">Trang quản trị</a>
                     @endif
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <input type="submit" class="dropdown-item" id="account_control" value="Đăng xuất">
                     </form>
-                    @if(!Auth::user()->type === 'admin')
+                    @if(!Auth::user()->type === 'Admin')
                         <a class="dropdown-item" id="account_control" href="#">Liên hệ</a>
                     @endif
                     <span class="dropdown-item-text" id="label_account_text">T-services hotel</span>

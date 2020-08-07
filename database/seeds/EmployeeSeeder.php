@@ -19,7 +19,7 @@ class EmployeeSeeder extends Seeder
             'phone' => '0905555000',
             'possition' => 'Quản lý',
             'salary' => '10000000',
-            'image' => 'storage/images/vinh.jpg',
+            'image' => 'images/vinh.jpg',
             'user_id' => 2
         ]);
 
@@ -30,7 +30,7 @@ class EmployeeSeeder extends Seeder
             'phone' => '0905200200',
             'possition' => 'Tiếp tân',
             'salary' => '8000000',
-            'image' => 'storage/images/vinhboss.jpg',
+            'image' => 'images/vinhboss.jpg',
             'user_id' => 3
         ]);
 
@@ -41,7 +41,7 @@ class EmployeeSeeder extends Seeder
             'phone' => '0912321123',
             'possition' => 'IT',
             'salary' => '8000000',
-            'image' => 'storage/images/thanh.png',
+            'image' => 'images/thanh.png',
             'user_id' => 4
         ]);
     }
