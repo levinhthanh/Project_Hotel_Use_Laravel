@@ -1,0 +1,15 @@
+.select_options{
+    position: relative !important;
+}
+#icon_edit_delete{
+    position: absolute;
+    top: 15%;
+    right: 1vw;
+    font-size: 1.5vw;
+}
+#icon_add{
+    position: absolute;
+    top: 15%;
+    left: 1vw;
+    font-size: 1.5vw;
+}

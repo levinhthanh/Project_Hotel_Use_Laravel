@@ -51,7 +51,6 @@
                             <table id="table_status">
 
                             </table>
-
                         </div>
 
                         <div class="modal-body">

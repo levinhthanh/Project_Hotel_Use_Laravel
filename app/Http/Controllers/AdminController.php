@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\EmployeeRequest;
+use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
+use App\Repositories\Category\CategoryRepositoryInterface;
 use App\Repositories\Employee\EmployeeRepositoryInterface;
 use App\Repositories\User\UserRepositoryInterface;
 
@@ -13,13 +15,75 @@ class AdminController extends Controller
 {
     protected $employeeRepository;
     protected $userRepository;
+    protected $categoryRepository;
 
-    public function __construct(EmployeeRepositoryInterface $employeeRepository, UserRepositoryInterface $userRepository)
-    {
+    public function __construct(
+        EmployeeRepositoryInterface $employeeRepository,
+        UserRepositoryInterface $userRepository,
+        CategoryRepositoryInterface $categoryRepository
+    ) {
         $this->employeeRepository = $employeeRepository;
         $this->userRepository = $userRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
+    // *
+    // **
+    // ***
+    // ****  QUẢN LÝ LOẠI PHÒNG  *****
+    public function manager_category()
+    {
+
+        return view('admin.category');
+    }
+
+    public function get_categories()
+    {
+        $categories = $this->categoryRepository->getCategories();
+
+        return response()->json($categories);
+    }
+
+    public function get_category(Request $request)
+    {
+        $id = $request->id;
+        $category = $this->categoryRepository->getCategory($id);
+
+        return response()->json($category);
+    }
+
+    public function validate_category(CategoryRequest $request)
+    {
+        $this->categoryRepository->add_category($request);
+        $message = "Đã thêm loại phòng mới!";
+
+        return response()->json($message);
+    }
+
+    public function update_category(CategoryRequest $request)
+    {
+
+        $this->categoryRepository->update_category($request);
+        $message = "Đã cập nhật thành công!";
+
+        return response()->json($message);
+    }
+
+    public function delete_category($id)
+    {
+        $this->categoryRepository->delete_category($id);
+
+        return response()->json("Đã xóa thành công!");
+    }
+
+
+
+
+
+    // *
+    // **
+    // ***
+    // ****  QUẢN LÝ NHÂN VIÊN  *****
     public function manager_employee()
     {
 
@@ -53,7 +117,7 @@ class AdminController extends Controller
             $image = $path;
         }
         $employee = [
-             'address' => $address, 'phone' => $phone,
+            'address' => $address, 'phone' => $phone,
             'possition' => $possition, 'salary' => $salary, 'image' => $image
         ];
         $this->employeeRepository->update($id, $employee);
@@ -107,11 +171,4 @@ class AdminController extends Controller
             return response()->json($message);
         }
     }
-
-
-
-    // public function add_employee()
-    // {
-    //     return view('admin.add_employee');
-    // }
 }

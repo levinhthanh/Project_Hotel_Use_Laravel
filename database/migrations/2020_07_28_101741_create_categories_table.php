@@ -16,9 +16,15 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image');
-            $table->string('description', 10000);
-            $table->boolean('deleted')->default(false);
+            $table->double('price_hour');
+            $table->double('price_day');
+            $table->string('image1');
+            $table->string('image2');
+            $table->string('image3');
+            $table->string('description1', 1500);
+            $table->string('description2', 1500);
+            $table->string('description3', 1500);
+            $table->enum('status', ['Hoạt động','Đã xóa'])->default('Hoạt động');
             $table->timestamps();
         });
     }

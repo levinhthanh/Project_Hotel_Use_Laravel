@@ -7,9 +7,9 @@ employee.showEmployees = function () {
         dataType: "json",
         success: function (data) {
             $('#tbEmployee tbody').empty();
-                $.each(data, function (key, value) {
-                    $('#tbEmployee tbody').append(
-                        `<tr>
+            $.each(data, function (key, value) {
+                $('#tbEmployee tbody').append(
+                    `<tr>
                             <td>${value.id}</td>
                             <td><img src="/storage/${value.image}" style="width:60px; height: 70px;"></td>
                             <td>${value.name}</td>
@@ -27,9 +27,9 @@ employee.showEmployees = function () {
                                         onclick="employee.delete(${value.id})">Xóa</a>
                             </td>
                         </tr>`
-                    )
-                });
-                $('#tbEmployee').DataTable();
+                )
+            });
+            $('#tbEmployee').DataTable();
 
         }
     });
@@ -42,84 +42,84 @@ employee.openModalAdd = function () {
 
 employee.save = function () {
     if ($("#formAddEmployee").valid()) {
-            var formData = new FormData($("#formAddEmployee")[0]);
-            formData.append('name', $("#name").val());
-            formData.append('birthday', $("#birthday").val());
-            formData.append('gender', $("#gender").val());
-            formData.append('address', $("#address").val());
-            formData.append('email', $("#email").val());
-            formData.append('password', $("#password").val());
-            formData.append('phone', $("#phone").val());
-            formData.append('possition', $("#possition").val());
-            formData.append('salary', $("#salary").val());
-            formData.append('image', $('#image')[0].files[0]);
+        var formData = new FormData($("#formAddEmployee")[0]);
+        formData.append('name', $("#name").val());
+        formData.append('birthday', $("#birthday").val());
+        formData.append('gender', $("#gender").val());
+        formData.append('address', $("#address").val());
+        formData.append('email', $("#email").val());
+        formData.append('password', $("#password").val());
+        formData.append('phone', $("#phone").val());
+        formData.append('possition', $("#possition").val());
+        formData.append('salary', $("#salary").val());
+        formData.append('image', $('#image')[0].files[0]);
 
-            $.ajax({
-                url: "/api/employee",
-                method: 'POST',
-                dataType: 'json',
-                contentType: false,
-                processData: false,
-                data: formData,
-                success: function (data) {
-                    document.getElementById('table_status').innerHTML = "";
-                    document.getElementById('create_status').style = 'display:block';
-                    if (data == 'Email đã tồn tại!') {
-                        $('#table_status').append(`<tr><td style="color:red;">- ${data}</td></tr>`);
-                    } else {
-                        $("#addEmployee").modal('hide');
-                        bootbox.alert(data);
-                        employee.showEmployees();
-                    }
-                },
-                error: function (data) {
-                    document.getElementById('table_status').innerHTML = "";
-                    document.getElementById('create_status').style = 'display:block';
-                    errors = data.responseJSON.errors;
-                    $.each(errors, function (key, value) {
-                        $('#table_status').append(`<tr><td style="color:red;">- ${value}</td></tr>`)
-                    })
+        $.ajax({
+            url: "/api/employee",
+            method: 'POST',
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (data) {
+                document.getElementById('table_status').innerHTML = "";
+                document.getElementById('create_status').style = 'display:block';
+                if (data == 'Email đã tồn tại!') {
+                    $('#table_status').append(`<tr><td style="color:red;">- ${data}</td></tr>`);
+                } else {
+                    $("#addEmployee").modal('hide');
+                    bootbox.alert(data);
+                    employee.showEmployees();
                 }
-            })
+            },
+            error: function (data) {
+                document.getElementById('table_status').innerHTML = "";
+                document.getElementById('create_status').style = 'display:block';
+                errors = data.responseJSON.errors;
+                $.each(errors, function (key, value) {
+                    $('#table_status').append(`<tr><td style="color:red;">- ${value}</td></tr>`)
+                })
+            }
+        })
     }
 }
 
 employee.update = function () {
     if ($("#formEditEmployee").valid()) {
-            var formData = new FormData($("#formEditEmployee")[0]);
-            formData.append('id', $("#editEmployeeId").val());
-            formData.append('address', $("#addressEdit").val());
-            formData.append('phone', $("#phoneEdit").val());
-            formData.append('possition', $("#possitionEdit").val());
-            formData.append('salary', $("#salaryEdit").val());
-            formData.append('image', $('#imageEdit')[0].files[0]);
+        var formData = new FormData($("#formEditEmployee")[0]);
+        formData.append('id', $("#editEmployeeId").val());
+        formData.append('address', $("#addressEdit").val());
+        formData.append('phone', $("#phoneEdit").val());
+        formData.append('possition', $("#possitionEdit").val());
+        formData.append('salary', $("#salaryEdit").val());
+        formData.append('image', $('#imageEdit')[0].files[0]);
 
-            $.ajax({
-                url:'/api/employee/update',
-                method: 'POST',
-                dataType: 'json',
-                contentType: false,
-                processData: false,
-                data: formData,
-                success: function (data) {
-                    console.log(data);
-                        $("#editEmployee").modal('hide');
-                        bootbox.alert(data);
-                        employee.showEmployees();
-                },
-                error: function (data) {
-                    console.log(data);
-                    document.getElementById('table_status_update').innerHTML = "";
-                    document.getElementById('update_status').style = 'display:block';
-                    errors = data.responseJSON.errors;
-                    $.each(errors, function (key, value) {
-                        $('#table_status_update').append(`<tr><td style="color:red;">- ${value}</td></tr>`)
-                    })
-                }
-            })
-        }
-
+        $.ajax({
+            url: '/api/employee/update',
+            method: 'POST',
+            dataType: 'json',
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (data) {
+                console.log(data);
+                $("#editEmployee").modal('hide');
+                bootbox.alert(data);
+                employee.showEmployees();
+            },
+            error: function (data) {
+                console.log(data);
+                document.getElementById('table_status_update').innerHTML = "";
+                document.getElementById('update_status').style = 'display:block';
+                errors = data.responseJSON.errors;
+                $.each(errors, function (key, value) {
+                    $('#table_status_update').append(`<tr><td style="color:red;">- ${value}</td></tr>`)
+                })
+            }
+        })
     }
+
+}
 
 
 employee.reset = function () {
@@ -135,19 +135,19 @@ employee.reset = function () {
     $("#image").val("");
 }
 
-employee.get = function(id){
+employee.get = function (id) {
     $.ajax({
-        url:`/api/employee/${id}`,
-        method:"GET",
-        dataType:"json",
-        success : function(data){
-            if(data != null){
+        url: `/api/employee/${id}`,
+        method: "GET",
+        dataType: "json",
+        success: function (data) {
+            if (data != null) {
                 $("#editEmployeeId").val(data.id);
                 $("#addressEdit").val(data.address);
                 $("#phoneEdit").val(data.phone);
                 $("#possitionEdit").val(data.possition);
                 $("#salaryEdit").val(data.salary);
-                var avatar = (data.image != null && data.image != "") ? "/storage/"+data.image : "images/nonavatar.png";
+                var avatar = (data.image != null && data.image != "") ? "/storage/" + data.image : "images/nonavatar.png";
                 $("#editAvatar").attr("src", avatar);
                 document.getElementById('table_status_update').innerHTML = "";
                 $("#editEmployee").modal('show');
@@ -159,7 +159,7 @@ employee.get = function(id){
     });
 }
 
-employee.delete = function(id){
+employee.delete = function (id) {
     bootbox.confirm({
         title: "Xóa nhân viên",
         message: "Bạn có muốn xóa nhân viên này khỏi danh sách?",
@@ -172,12 +172,12 @@ employee.delete = function(id){
             }
         },
         callback: function (result) {
-            if(result){
+            if (result) {
                 $.ajax({
-                    url:`/api/employee/${id}`,
+                    url: `/api/employee/${id}`,
                     method: "DELETE",
-                    dataType:"json",
-                    success : function(data){
+                    dataType: "json",
+                    success: function (data) {
                         bootbox.alert(data);
                         employee.showEmployees();
                     }

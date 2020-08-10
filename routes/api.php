@@ -24,5 +24,12 @@ Route::prefix('/employee')->group(function () {
     Route::get('/{id}', 'AdminController@get_employee')->name('get_employee');
     Route::post('/update', 'AdminController@update_employee')->name('update_employee');
     Route::delete('/{id}', 'AdminController@delete_employee')->name('delete_employee');
+});
 
+Route::prefix('/category')->group(function () {
+    Route::get('/', 'AdminController@get_categories')->name('get_categories');
+    Route::post('/', 'AdminController@validate_category')->name('validate_category');
+    Route::get('/{id}', 'AdminController@get_category')->name('get_category');
+    Route::post('/update', 'AdminController@update_category')->name('update_category');
+    Route::delete('/{id}', 'AdminController@delete_category')->name('delete_category');
 });

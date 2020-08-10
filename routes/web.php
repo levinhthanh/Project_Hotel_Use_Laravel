@@ -27,6 +27,7 @@ Route::prefix('/admin')->group(function () {
         }
     })->name('admin_page');
     Route::get('/employee', 'AdminController@manager_employee')->name('manager_employee');
+    Route::get('/category', 'AdminController@manager_category')->name('manager_category');
 
 });
 

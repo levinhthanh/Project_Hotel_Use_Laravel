@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <title>@yield('title')</title>
+@stack('css')
 
 <head>
     <meta charset="utf-8">
@@ -156,9 +157,8 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-                                             with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview menu-open">
+
+                        {{-- <li class="nav-item has-treeview menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
@@ -180,7 +180,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a href="{{ route('manager_employee') }}" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
@@ -229,13 +229,19 @@
                                 <li class="nav-item">
                                     <a href="product_list" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Danh sách phòng</p>
+                                        <p>Bản đồ</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('manager_category') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Hạng phòng</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Thêm phòng mới</p>
+                                        <p>Danh sách phòng</p>
                                     </a>
                                 </li>
                             </ul>
