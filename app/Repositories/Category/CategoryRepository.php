@@ -111,8 +111,9 @@ class CategoryRepository extends EloquentRepository implements CategoryRepositor
     }
 
     public function delete_category($id){
+        $category['status'] = 'Đã xóa';
         $delete = new CategoryRepository;
-        $delete->delete($id);
+        $delete->update($id, $category);
     }
 
 }
