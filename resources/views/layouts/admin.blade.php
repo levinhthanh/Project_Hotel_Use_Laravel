@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link rel="stylesheet" href="{{ asset('css/fontawesome/css/all.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=PT+Serif&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('vendor/dist/css/adminlte.min.css') }}">
 </head>
 
@@ -239,7 +240,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="" class="nav-link">
+                                    <a href="{{ route('manager_room') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Danh sách phòng</p>
                                     </a>

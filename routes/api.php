@@ -33,3 +33,11 @@ Route::prefix('/category')->group(function () {
     Route::post('/update', 'AdminController@update_category')->name('update_category');
     Route::delete('/{id}', 'AdminController@delete_category')->name('delete_category');
 });
+
+Route::prefix('/room')->group(function () {
+    Route::get('/', 'AdminController@get_rooms')->name('get_rooms');
+    Route::post('/', 'AdminController@validate_room')->name('validate_room');
+    Route::get('/{id}', 'AdminController@get_room')->name('get_room');
+    Route::post('/update', 'AdminController@update_room')->name('update_room');
+    Route::delete('/{id}', 'AdminController@delete_room')->name('delete_room');
+});

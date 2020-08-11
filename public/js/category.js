@@ -19,10 +19,16 @@ function add_category() {
             processData: false,
             data: formData,
             success: function (data) {
-                $("#addCategory").modal('hide');
-                bootbox.alert(data);
-                loadSelectionsCategory();
-                loadCategory(1);
+                if(data == 'Loại phòng đã tồn tại'){
+                    document.getElementById('table_status').innerHTML = "";
+                    document.getElementById('create_status').style = 'display:block';
+                    $('#table_status').append(`<tr><td style="color:red;">- ${data}</td></tr>`)
+                }else{
+                    $("#addCategory").modal('hide');
+                    bootbox.alert(data);
+                    loadSelectionsCategory();
+                    loadCategory(1);
+                }
             },
             error: function (data) {
                 document.getElementById('table_status').innerHTML = "";
@@ -37,7 +43,7 @@ function add_category() {
 }
 
 function update_category(id) {
-        var formData = new FormData($("#formAddCategory")[0]);
+        var formData = new FormData($("#formEditCategory")[0]);
         formData.append('id', id);
         formData.append('name', $("#name_edit").val());
         formData.append('price_hour', $("#price_hour_edit").val());
@@ -63,10 +69,16 @@ function update_category(id) {
             processData: false,
             data: formData,
             success: function (data) {
-                $("#editCategory").modal('hide');
-                bootbox.alert(data);
-                loadSelectionsCategory();
-                loadCategory(1);
+                if(data == 'Loại phòng đã tồn tại'){
+                    document.getElementById('edit_category_status').innerHTML = "";
+                    document.getElementById('edit_status').style = 'display:block';
+                    $('#edit_category_status').append(`<tr><td style="color:red;">- ${data}</td></tr>`)
+                }else{
+                    $("#editCategory").modal('hide');
+                    bootbox.alert(data);
+                    loadSelectionsCategory();
+                    loadCategory(1);
+                }
             },
             error: function (data) {
                 document.getElementById('edit_category_status').innerHTML = "";

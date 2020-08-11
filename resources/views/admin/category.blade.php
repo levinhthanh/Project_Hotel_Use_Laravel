@@ -111,17 +111,17 @@
                             </div>
                             <div class="form-group">
                                 <label>Mô tả 1:</label><br>
-                                <textarea name="description1" id="description1" cols="100" rows="5" data-rule-required="true"
+                                <textarea name="description1" id="description1" cols="90" rows="5" data-rule-required="true"
                                     data-msg-required="Bạn chưa nhập mô tả 1!"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Mô tả 2:</label><br>
-                                <textarea name="description2" id="description2" cols="100" rows="5" data-rule-required="true"
+                                <textarea name="description2" id="description2" cols="90" rows="5" data-rule-required="true"
                                     data-msg-required="Bạn chưa nhập mô tả 2!"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Mô tả 3:</label><br>
-                                <textarea name="description3" id="description3" cols="100" rows="5" data-rule-required="true"
+                                <textarea name="description3" id="description3" cols="90" rows="5" data-rule-required="true"
                                     data-msg-required="Bạn chưa nhập mô tả 3!"></textarea>
                             </div>
 
@@ -202,15 +202,15 @@
                             </div>
                             <div class="form-group">
                                 <label>Mô tả 1:</label><br>
-                                <textarea name="description1" id="description1_edit" cols="100" rows="5"></textarea>
+                                <textarea name="description1" id="description1_edit" cols="90" rows="5"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Mô tả 2:</label><br>
-                                <textarea name="description2" id="description2_edit" cols="100" rows="5"></textarea>
+                                <textarea name="description2" id="description2_edit" cols="90" rows="5"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Mô tả 3:</label><br>
-                                <textarea name="description3" id="description3_edit" cols="100" rows="5"></textarea>
+                                <textarea name="description3" id="description3_edit" cols="90" rows="5"></textarea>
                             </div>
 
                         </form>

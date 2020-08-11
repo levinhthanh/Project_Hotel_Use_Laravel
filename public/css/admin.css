@@ -1,3 +1,6 @@
+*{
+    font-family: 'PT Serif', serif;
+}
 .add_employee{
     width: 60% !important;
     margin: auto !important;

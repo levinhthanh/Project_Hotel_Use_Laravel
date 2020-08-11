@@ -16,4 +16,6 @@ interface CategoryRepositoryInterface
     public function update_category($category);
 
     public function delete_category($id);
+
+    public function isExist($request);
 }

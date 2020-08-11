@@ -44,6 +44,5 @@ class CategoryRequest extends FormRequest
             'price_day.regex' => 'Giá phòng phải từ 5 đến 10 chữ số!',
 
         ];
-
     }
 }

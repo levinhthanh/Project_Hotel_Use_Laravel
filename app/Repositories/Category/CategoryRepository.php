@@ -5,6 +5,8 @@ namespace App\Repositories\Category;
 use App\Repositories\EloquentRepository;
 use App\Repositories\Category\CategoryRepositoryInterface;
 use App\Category;
+use App\Room;
+use App\Repositories\Room\RoomRepository;
 
 class CategoryRepository extends EloquentRepository implements CategoryRepositoryInterface
 {
@@ -21,6 +23,20 @@ class CategoryRepository extends EloquentRepository implements CategoryRepositor
         $categories = Category::select('name','id')->where('status','Hoạt động')->get();
 
         return $categories;
+    }
+
+    public function isExist($request){
+        $name = $request->name;
+        $check = Category::where('name', $name)->where('status', 'Hoạt động')->first();
+        if ($check) {
+            if ($check->id == $request->id) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
     }
 
     public function getCategory($id){
@@ -114,6 +130,17 @@ class CategoryRepository extends EloquentRepository implements CategoryRepositor
         $category['status'] = 'Đã xóa';
         $delete = new CategoryRepository;
         $delete->update($id, $category);
+
+        // Xóa luôn các phòng có loại này:
+        $rooms = Room::select('id','category_id')->where('status','Hoạt động')->get();
+        foreach($rooms as $key => $value){
+            if($value['category_id'] == $id){
+                $id_room = $value['id'];
+                $room['status'] = 'Đã xóa';
+                $delete = new RoomRepository;
+                $delete->update($id_room, $room);
+            }
+        }
     }
 
 }
