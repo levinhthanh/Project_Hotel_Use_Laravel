@@ -265,7 +265,13 @@ function uploadImage3(element, action) {
 }
 
 function openModalAdd() {
-
+    $("#name").val("");
+    $("#Image1").attr("src", "/storage/default_image.jpg");
+    $("#image1").val("");
+    $("#Image2").attr("src", "/storage/default_image.jpg");
+    $("#image2").val("");
+    $("#Image3").attr("src", "/storage/default_image.jpg");
+    $("#image3").val("");
     $("#addRoom").modal('show');
 }
 

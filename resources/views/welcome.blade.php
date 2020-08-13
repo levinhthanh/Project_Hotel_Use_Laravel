@@ -3,124 +3,119 @@
 @section('title', 'My hotel - Homepage')
 
 @section('css')
-    <link rel="stylesheet" href="./css/welcome.css">
+    <link rel="stylesheet" href="./css/welcome_page.css">
 
 
 
 @section('content')
 
-    <div class="in_out">
-        <div id="t_service">
-            <a id="social_network" href=""><i class="fab fa-facebook-square"></i></a>
-            <a id="social_network" href=""><i class="fab fa-youtube"></i></a>
-            <a id="social_network" href=""><i class="fab fa-twitter"></i></a>
-            <a id="social_network" href=""><i class="fab fa-instagram"></i></a>
-        </div>
+    <div class="container-fluid slide_banners_cover mt-3">
+        <div class="slide_banners">
 
-        <div class="dropdown">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                <i class="fas fa-user-circle"></i>
-            </button>
-            <div class="dropdown-menu">
-                @if(Auth::check())
-                    <label class="dropdown-item" id="account_control">
-                        Hi,<span id="user_name">{{ Auth::user()->name }}</span>
-                        <i class="fas fa-circle" id="user_status"></i>
-                    </label>
-                    @if(Auth::user()->type === 'Admin')
-                        <a class="dropdown-item" id="account_control" href="{{ route('admin_page') }}">Trang quản trị</a>
-                    @endif
-                    <form action="{{ route('logout') }}" method="post">
-                        @csrf
-                        <input type="submit" class="dropdown-item" id="account_control" value="Đăng xuất">
-                    </form>
-                    @if(!Auth::user()->type === 'Admin')
-                        <a class="dropdown-item" id="account_control" href="#">Liên hệ</a>
-                    @endif
-                    <span class="dropdown-item-text" id="label_account_text">T-services hotel</span>
-                @else
-                    <a class="dropdown-item" id="account_control" href="{{ route('login') }}">Đăng nhập</a>
-                    <a class="dropdown-item" id="account_control" href="{{ route('register') }}">Đăng ký</a>
-                    <a class="dropdown-item" id="account_control" href="#">Liên hệ</a>
-                    <span class="dropdown-item-text" id="label_account_text">T-services hotel</span>
-                @endif
-            </div>
-        </div>
-    </div>
-
-    <div class="main_view">
-        <div class="directions">
-            <div class="label_home">
-                <a id="a_color" href="">Relax-Hotel</a>
-            </div>
-            <div class="drop_menu">
-                <i onclick="show_menu()" id="dropdown_menu" class="fas fa-align-justify"></i>
-            </div>
-        </div>
-        <div class="menu" id="menu_block">
-            <div class="header_menu">
-                <i class="fas fa-align-justify"></i>
-                <label>MENU</label>
-                <i onclick="hidden_menu()" id="hidden_menu" class="fas fa-times-circle"></i>
-            </div>
-            <div class="div1">
-                <a href="">Khách sạn</a>
-                {{-- Giới thiệu chung--}}
-            </div>
-            <div class="div1">
-                <a href="">Đặt phòng</a>
-            </div>
-            <div class="div1">
-                <a href="">Dich vụ</a>
-            </div>
-            <div class="div1">
-                <a href="">Hạng phòng</a>
-            </div>
-            <div class="div1">
-                <a href="">Bài viết</a>
-            </div>
-            <div class="div1">
-                <a href="">Khuyến mãi</a>
-            </div>
-            <div class="div1">
-                <a href="">Liên hệ</a>
-            </div>
-        </div>
-        <div class="welcome" id="welcome_block">
-            <h1 id="label_welcome">Welcome to Relax Hotel</h1>
-            <p id="p_welcome">Rất hân hạnh được tiếp đón quý khách!</p>
-        </div>
-        <form action="" method="post" class="book_room" id="book_block">
-            <table class="table_book_room">
-                <tr>
-                    <td id="selections_book">Ngày nhận</td>
-                    <td id="selections_book">Ngày trả</td>
-                </tr>
-                <tr>
-                    <td id="selections_book"><input id="date_book" type="date" name="check_in"></td>
-                    <td id="selections_book"><input id="date_book" type="date" name="check_out"></td>
-                </tr>
-            </table>
-            <input class="button_book_room" type="submit" value="ĐẶT NGAY">
-        </form>
-    </div>
-
-    <div class="categories">
-        <div class="container">
-            <label id="select_category"> 4 LỰA CHỌN CHO BẠN</label>
-            <div class="row">
-                @foreach($categories as $key => $category)
-                    <div class="col-sm aos-animate">
-                        <img src="images/categories/{{ $category->image }}" class="img-fluid" alt="image">
-                        <a href="">{{ $category->name }}</a>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="{{ asset('./images/banners/banner3.jpg') }}" alt="First slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 style="color: darkred; font-weight: bold;">XIN CHÀO !</h5>
+                            <p style="color: darkorange">Rất vui khi được tiếp đón quý khách ...</p>
+                        </div>
                     </div>
-                @endforeach
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="{{ asset('./images/banners/banner4.jpg') }}" alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 style="color: darkred; font-weight: bold;">SUNRISE SAPA</h5>
+                            <p style="color: darkorange">Đến với chúng tôi để trải nghiệm không gian thoải mái nhất</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="{{ asset('./images/banners/banner5.jpg') }}" alt="Third slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 style="color: darkred; font-weight: bold;">TRẢI NGHIỆM ĐÁNG NHỚ !</h5>
+                            <p style="color: darkorange">Không gian sinh hoạt và giải trí hàng đầu</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="container-fluid mt-4 mb-3 booking_room">
+            <div class="row">
+
+
+
+
+
+
+
+
             </div>
         </div>
     </div>
+
+
+    <div class="container-fluid categories_cover mt-3 pt-5 pb-5">
+        <div class="d-flex justify-content-around" id="categories_list">
+
+        </div>
+        <div class="icon_view_categories text-right mt-3 pr-3">
+            <a href="{{ route('view_categories') }}">Xem thêm</a>
+            <a href="{{ route('view_categories') }}"><i class="fas fa-angle-double-right"></i></a>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @endsection
 
 
 @section('javascript')
-    <script src="js/show_menu.js"></script>
+    <script src="{{ asset('libs/node_modules/jquery/dist/jquery.js') }}"></script>
+    <script src="js/welcome_page.js"></script>

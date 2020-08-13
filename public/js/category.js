@@ -19,11 +19,11 @@ function add_category() {
             processData: false,
             data: formData,
             success: function (data) {
-                if(data == 'Loại phòng đã tồn tại'){
+                if (data == 'Loại phòng đã tồn tại') {
                     document.getElementById('table_status').innerHTML = "";
                     document.getElementById('create_status').style = 'display:block';
                     $('#table_status').append(`<tr><td style="color:red;">- ${data}</td></tr>`)
-                }else{
+                } else {
                     $("#addCategory").modal('hide');
                     bootbox.alert(data);
                     loadSelectionsCategory();
@@ -43,77 +43,98 @@ function add_category() {
 }
 
 function update_category(id) {
-        var formData = new FormData($("#formEditCategory")[0]);
-        formData.append('id', id);
-        formData.append('name', $("#name_edit").val());
-        formData.append('price_hour', $("#price_hour_edit").val());
-        formData.append('price_day', $("#price_day_edit").val());
-        if( $('#image1')[0].files[0] != ""){
-            formData.append('image1', $('#image1')[0].files[0]);
-        }
-        if( $('#image2')[0].files[0] != ""){
-            formData.append('image2', $('#image2')[0].files[0]);
-        }
-        if( $('#image3')[0].files[0] != ""){
-            formData.append('image3', $('#image3')[0].files[0]);
-        }
-        formData.append('description1', $("#description1_edit").val());
-        formData.append('description2', $("#description2_edit").val());
-        formData.append('description3', $("#description3_edit").val());
+    var formData = new FormData($("#formEditCategory")[0]);
+    formData.append('id', id);
+    formData.append('name', $("#name_edit").val());
+    formData.append('price_hour', $("#price_hour_edit").val());
+    formData.append('price_day', $("#price_day_edit").val());
+    if ($('#image1')[0].files[0] != "") {
+        formData.append('image1', $('#image1')[0].files[0]);
+    }
+    if ($('#image2')[0].files[0] != "") {
+        formData.append('image2', $('#image2')[0].files[0]);
+    }
+    if ($('#image3')[0].files[0] != "") {
+        formData.append('image3', $('#image3')[0].files[0]);
+    }
+    formData.append('description1', $("#description1_edit").val());
+    formData.append('description2', $("#description2_edit").val());
+    formData.append('description3', $("#description3_edit").val());
 
-        $.ajax({
-            url: '/api/category/update',
-            method: 'POST',
-            dataType: 'json',
-            contentType: false,
-            processData: false,
-            data: formData,
-            success: function (data) {
-                if(data == 'Loại phòng đã tồn tại'){
-                    document.getElementById('edit_category_status').innerHTML = "";
-                    document.getElementById('edit_status').style = 'display:block';
-                    $('#edit_category_status').append(`<tr><td style="color:red;">- ${data}</td></tr>`)
-                }else{
-                    $("#editCategory").modal('hide');
-                    bootbox.alert(data);
-                    loadSelectionsCategory();
-                    loadCategory(1);
-                }
-            },
-            error: function (data) {
+    $.ajax({
+        url: '/api/category/update',
+        method: 'POST',
+        dataType: 'json',
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: function (data) {
+            if (data == 'Loại phòng đã tồn tại') {
                 document.getElementById('edit_category_status').innerHTML = "";
                 document.getElementById('edit_status').style = 'display:block';
-                errors = data.responseJSON.errors;
-                $.each(errors, function (key, value) {
-                    $('#edit_category_status').append(`<tr><td style="color:red;">- ${value}</td></tr>`)
-                })
+                $('#edit_category_status').append(`<tr><td style="color:red;">- ${data}</td></tr>`)
+            } else {
+                $("#editCategory").modal('hide');
+                bootbox.alert(data);
+                loadSelectionsCategory();
+                loadCategory(1);
             }
-        })
+        },
+        error: function (data) {
+            document.getElementById('edit_category_status').innerHTML = "";
+            document.getElementById('edit_status').style = 'display:block';
+            errors = data.responseJSON.errors;
+            $.each(errors, function (key, value) {
+                $('#edit_category_status').append(`<tr><td style="color:red;">- ${value}</td></tr>`)
+            })
+        }
+    })
 }
 
-function uploadImage1(element) {
+function uploadImage1(element, action) {
     var img = element.files[0];
     var reader = new FileReader();
-    reader.onloadend = function () {
-        $("#Image1").attr("src", reader.result);
+    if (action == 'create') {
+        reader.onloadend = function () {
+            $("#Image1").attr("src", reader.result);
+        }
+    }
+    if (action == 'edit') {
+        reader.onloadend = function () {
+            $("#editImage1").attr("src", reader.result);
+        }
     }
     reader.readAsDataURL(img);
 }
 
-function uploadImage2(element) {
+function uploadImage2(element, action) {
     var img = element.files[0];
     var reader = new FileReader();
-    reader.onloadend = function () {
-        $("#Image2").attr("src", reader.result);
+    if (action == 'create') {
+        reader.onloadend = function () {
+            $("#Image2").attr("src", reader.result);
+        }
+    }
+    if (action == 'edit') {
+        reader.onloadend = function () {
+            $("#editImage2").attr("src", reader.result);
+        }
     }
     reader.readAsDataURL(img);
 }
 
-function uploadImage3(element) {
+function uploadImage3(element, action) {
     var img = element.files[0];
     var reader = new FileReader();
-    reader.onloadend = function () {
-        $("#Image3").attr("src", reader.result);
+    if (action == 'create') {
+        reader.onloadend = function () {
+            $("#Image3").attr("src", reader.result);
+        }
+    }
+    if (action == 'edit') {
+        reader.onloadend = function () {
+            $("#editImage3").attr("src", reader.result);
+        }
     }
     reader.readAsDataURL(img);
 }
@@ -186,6 +207,18 @@ function loadCategory(id) {
 }
 
 function showModalAdd() {
+    $("#name").val("");
+    $("#Image1").attr("src", "/storage/default_image.jpg");
+    $("#image1").val("");
+    $("#Image2").attr("src", "/storage/default_image.jpg");
+    $("#image2").val("");
+    $("#Image3").attr("src", "/storage/default_image.jpg");
+    $("#image3").val("");
+    $("#price_hour").val("");
+    $("#price_day").val("");
+    $("#description1").val("");
+    $("#description2").val("");
+    $("#description3").val("");
     $("#addCategory").modal('show');
 }
 

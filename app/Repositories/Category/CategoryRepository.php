@@ -20,7 +20,7 @@ class CategoryRepository extends EloquentRepository implements CategoryRepositor
     }
 
     public function getCategories(){
-        $categories = Category::select('name','id')->where('status','Hoạt động')->get();
+        $categories = Category::select('name','id','price_hour','price_day','image1','image2','image3','description1','description2','description3')->where('status','Hoạt động')->get();
 
         return $categories;
     }

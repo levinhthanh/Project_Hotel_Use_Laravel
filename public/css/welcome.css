@@ -51,7 +51,7 @@ html, body {
 
 
 
-.main_view{
+/* .main_view{
     background-image: url('../bg/hero_1.jpg');
     background-size: cover;
     height: 90vh;
@@ -134,7 +134,7 @@ html, body {
     background-color: #212529;
     border-bottom: solid black 0.1vw;
 }
-/* WELCOME */
+
 .welcome{
     position: absolute;
     top: 30vh;
@@ -208,6 +208,32 @@ input:focus,select:focus,option:focus{
     display: block;
     padding: 1vw 0;
     font-size: 1.2vw;
-    /* margin-top: 2vw;
-    margin-left: 3vw; */
+
+} */
+
+
+
+
+
+
+.header_hotel{
+    background-color: #f8f9fa!important;;
+}
+#logo_page{
+    width: 200px;
+    height: auto;
+    text-align: center;
+}
+.form_booking{
+    border: solid 0.1px darkgrey;
+}
+.button_book{
+    background-color: darkred;
+    color: white;
+}
+#td_booking{
+    width: 33%;
+}
+.div_booking{
+    background-color: #212529;
 }

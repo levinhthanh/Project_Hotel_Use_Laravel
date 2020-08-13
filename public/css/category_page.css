@@ -1,0 +1,39 @@
+.categories_cover{
+    border: solid 0.1px darkgray;
+    background-color: #E6E6E6;
+    padding: 1vw;
+    width: 92% !important;
+}
+.category {
+    font-size: 20px;
+    width: 30% ;
+    background-color: white;
+
+}
+.category_image{
+    width: 100%;
+    padding-top: 1vw;
+    background-color: white;
+}
+.html_a_cover{
+    margin-top: 2vw;
+}
+.html_a{
+    color: rgba(0, 0, 0, 0.7) !important;
+    text-decoration: none !important;
+    padding-bottom: 1vw !important;
+    border-bottom: solid 0.2px darkgrey;
+    display: block;
+}
+.html_p_cover{
+    margin-top: 1.2vw;
+    padding-bottom: 2vw;
+}
+.html_p{
+    font-size: medium;
+}
+.html_button{
+    background-color: #281570 !important;
+    color: white !important;
+    font-size: medium !important;
+}

@@ -6,15 +6,16 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-//Start
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::get('/', 'GuestController@index')->name('welcome');
+
 //Logout
 Route::get('/home', function () {
     return view('welcome');
 });
+
+// USER ROUTE
+Route::get('/', 'GuestController@index')->name('welcome');
+Route::get('/categories', 'GuestController@view_categories')->name('view_categories');
+Route::get('/category/{id}', 'GuestController@view_category')->name('view_category');
 
 // ADMIN ROUTE
 Route::prefix('/admin')->group(function () {

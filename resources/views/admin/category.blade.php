@@ -73,7 +73,7 @@
                                         <img src="{{ asset('storage/default_image.jpg') }}" id="Image1"
                                             style="width: 100%; height: auto;" alt="">
                                         <input class="container-fluid mt-2" name="image1" id="image1" type="file"
-                                            accept="image/*" onchange="uploadImage1(this)"
+                                            accept="image/*" onchange="uploadImage1(this,'create')"
                                             data-rule-required="true" data-msg-required="Bạn chưa chọn ảnh!"
                                             style="color:darkred !important;">
                                     </div>
@@ -83,7 +83,7 @@
                                         <img src="{{ asset('storage/default_image.jpg') }}" id="Image2"
                                             style="width: 100%; height: auto;" alt="">
                                         <input class="container-fluid mt-2" name="image2" id="image2" type="file"
-                                            accept="image/*" onchange="uploadImage2(this)"
+                                            accept="image/*" onchange="uploadImage2(this,'create')"
                                             data-rule-required="true" data-msg-required="Bạn chưa chọn ảnh!"
                                             style="color:darkred !important;">
                                     </div>
@@ -93,7 +93,7 @@
                                         <img src="{{ asset('storage/default_image.jpg') }}" id="Image3"
                                             style="width: 100%; height: auto;" alt="">
                                         <input class="container-fluid mt-2" name="image3" id="image3" type="file"
-                                            accept="image/*" onchange="uploadImage3(this)"
+                                            accept="image/*" onchange="uploadImage3(this,'create')"
                                             data-rule-required="true" data-msg-required="Bạn chưa chọn ảnh!"
                                             style="color:darkred !important;">
                                     </div>
@@ -172,7 +172,7 @@
                                         <img src="" id="editImage1"
                                             style="width: 100%; height: auto;" alt="">
                                         <input class="container-fluid mt-2" name="image1" id="image1" type="file"
-                                            accept="image/*" onchange="uploadImage1(this)">
+                                            accept="image/*" onchange="uploadImage1(this,'edit')">
                                     </div>
                                 </div>
                                 <div class="col-4">
@@ -180,7 +180,7 @@
                                         <img src="" id="editImage2"
                                             style="width: 100%; height: auto;" alt="">
                                         <input class="container-fluid mt-2" name="image2" id="image2" type="file"
-                                            accept="image/*" onchange="uploadImage2(this)">
+                                            accept="image/*" onchange="uploadImage2(this,'edit')">
                                     </div>
                                 </div>
                                 <div class="col-4">
@@ -188,7 +188,7 @@
                                         <img src="" id="editImage3"
                                             style="width: 100%; height: auto;" alt="">
                                         <input class="container-fluid mt-2" name="image3" id="image3" type="file"
-                                            accept="image/*" onchange="uploadImage3(this)">
+                                            accept="image/*" onchange="uploadImage3(this,'edit')">
                                     </div>
                                 </div>
                             </div><br>
