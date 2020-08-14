@@ -31,7 +31,7 @@
                             <a class="nav-link" href="#">GIỚI THIỆU</a>
                         </li>
                         <li class="nav-item active mr-3">
-                            <a class="nav-link" href="#">HẠNG PHÒNG</a>
+                            <a class="nav-link" href="{{ route('view_categories') }}">HẠNG PHÒNG</a>
                         </li>
                         <li class="nav-item active mr-3">
                             <a class="nav-link" href="#">BÀI VIẾT</a>
@@ -88,26 +88,7 @@
             </div> --}}
         </div>
     </div>
-    <div class="container w-50 justify-content-center mt-3 div_booking">
-        <table class="table table-borderless form_booking">
-            <tbody>
-                <tr>
-                    <td scope="row" id="td_booking">
-                        <label for="in" style="color: white;">Ngày nhận</label>
-                        <input class="w-100" id="in" type="date">
-                    </td>
-                    <td scope="row" id="td_booking">
-                        <label for="out" style="color: white;">Ngày trả</label>
-                        <input class="w-100" id="out" type="date">
-                    </td>
-                    <td scope="row" id="td_booking">
-                        <br>
-                        <a class="btn w-100 button_book" href="">ĐẶT NGAY</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+
     @yield('content')
 
     <div class="footer">

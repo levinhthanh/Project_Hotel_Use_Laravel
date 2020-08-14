@@ -9,6 +9,10 @@ interface RoomRepositoryInterface
      */
     public function getRooms();
 
+    public function getRoomsEmpty($request);
+
+    public function getRoomsEmptyRecall($id, $acction);
+
     public function getRoom($id);
 
     public function updateRoom($request);
@@ -18,5 +22,7 @@ interface RoomRepositoryInterface
     public function addRoom($request);
 
     public function isExist($request);
+
+    // public function getInfoBooking();
 
 }

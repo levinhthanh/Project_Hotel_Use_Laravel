@@ -41,3 +41,9 @@ Route::prefix('/room')->group(function () {
     Route::post('/update', 'AdminController@update_room')->name('update_room');
     Route::delete('/{id}', 'AdminController@delete_room')->name('delete_room');
 });
+
+Route::prefix('/book')->group(function () {
+    Route::get('/checked/{id}', 'GuestController@checked')->name('checked');
+
+});
+

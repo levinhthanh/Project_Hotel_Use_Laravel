@@ -53,3 +53,19 @@ padding: 0.7vw;
     color: white !important;
     font-size: medium !important;
 }
+
+.form_booking{
+    border-left: solid 0.1px darkgrey;
+    border-right: solid 0.1px darkgrey;
+}
+.button_book{
+    background-color: darkred !important;
+    color: white !important;
+    height: 100% !important;
+    font-size: 6vw;
+}
+.div_booking{
+    background-color: #212529;
+}
+
+

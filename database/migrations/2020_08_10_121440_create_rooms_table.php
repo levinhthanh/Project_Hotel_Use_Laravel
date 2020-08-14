@@ -22,6 +22,8 @@ class CreateRoomsTable extends Migration
             $table->string('image2');
             $table->string('image3');
             $table->enum('using', ['Chưa sẵn sàng','Sẵn sàng','Đang được đặt','Đang sử dụng'])->default('Chưa sẵn sàng');
+            $table->date('day_in')->default('2020-01-01');
+            $table->date('day_out')->default('2020-01-01');
             $table->enum('status', ['Hoạt động','Đã xóa'])->default('Hoạt động');
             $table->timestamps();
         });

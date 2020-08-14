@@ -224,7 +224,7 @@ input:focus,select:focus,option:focus{
     height: auto;
     text-align: center;
 }
-.form_booking{
+/* .form_booking{
     border: solid 0.1px darkgrey;
 }
 .button_book{
@@ -236,4 +236,4 @@ input:focus,select:focus,option:focus{
 }
 .div_booking{
     background-color: #212529;
-}
+} */

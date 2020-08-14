@@ -51,18 +51,31 @@
                 </a>
             </div>
         </div>
-        <div class="container-fluid mt-4 mb-3 booking_room">
-            <div class="row">
-
-
-
-
-
-
-
-
+        {{-- <div class="container-fluid mt-4 mb-3 booking_room">
+            --}}
+            <div class="container w-75 mt-4 mb-3 justify-content-center div_booking">
+                <form action="{{ route('view_booking') }}" method="post" class="form_booking">
+                    @csrf
+                    <table class="container table table-borderless ">
+                        <tbody>
+                            <tr class="row pl-4 pr-4">
+                                <td class="col-4">
+                                    <label for="in" style="color: white;">Ngày nhận</label>
+                                    <input class="container" name="checkIn" type="date">
+                                </td>
+                                <td class="col-4">
+                                    <label for="out" style="color: white;">Ngày trả</label>
+                                    <input class="container" name="checkOut" type="date">
+                                </td>
+                                <td class="col-4">
+                                    <input class="container-fluid btn pt-3 button_book" type="submit" value="ĐẶT NGAY">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
             </div>
-        </div>
+            {{-- </div> --}}
     </div>
 
 
