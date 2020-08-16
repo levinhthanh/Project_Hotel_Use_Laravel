@@ -3,6 +3,7 @@
 namespace App\Repositories\Room;
 
 use App\BookingTemporary;
+use App\BookRoom;
 use App\Category;
 use App\Repositories\EloquentRepository;
 use App\Repositories\Room\RoomRepositoryInterface;
@@ -21,6 +22,72 @@ class RoomRepository extends EloquentRepository implements RoomRepositoryInterfa
         return Room::class;
     }
 
+    public function finishBooking()
+    {
+        $booking = new BookRoom;
+        $booking->name = Session::get('name');
+        $booking->phone = Session::get('phone');
+        $booking->email = Session::get('email');
+        $booking->checkIn = Session::get('checkIn');
+        $booking->checkOut = Session::get('checkOut');
+        $booking->payment = Session::get('payment');
+        $booking->id_room_list = "";
+
+        $session = Session::all();
+        foreach ($session as $key => $value) {
+            $check = substr($key, 0, 4);
+            if ($check == 'room') {
+                $room = [
+                    'using' => 'Đang được đặt',
+                    'day_in' => Session::get('checkIn'),
+                    'day_out' => Session::get('checkOut')
+                ];
+                $update = new RoomRepository;
+                $update->update($value, $room);
+
+                $booking->id_room_list .= $value . "-";
+            }
+        }
+
+        $booking->save();
+        Session::flush();
+    }
+
+    public function getRoomsBook()
+    {
+        $checkIn = Session::get('checkIn');
+        $rooms = Room::select('id', 'name', 'image1', 'category_id')
+            ->where([['status', 'Hoạt động'], ['using', 'Sẵn sàng'],])
+            ->orWhere([['status', 'Hoạt động'], ['using', 'Đang sử dụng'], ['day_out', '<', $checkIn],])
+            ->orWhere([['status', 'Hoạt động'], ['using', 'Đang được đặt'], ['day_out', '<', $checkIn],])
+            ->with('category')->get();
+
+        $infoBooking = [];
+        $sum = 0;
+        $days = Session::get('days');
+        $session = Session::all();
+        foreach ($session as $key => $value) {
+            $check = substr($key, 0, 4);
+            if ($check == 'room') {
+                $room_info = Room::findOrFail($value);
+                $name = $room_info->name;
+                $category_id = $room_info->category_id;
+                $price = Category::findOrFail($category_id);
+                $price = $price->price_day;
+                $infoBooking[$name] = number_format($price) . " x " . $days . ' (ngày)';
+                $sum += ($price * $days);
+            }
+        }
+        $infoBooking['Tổng cộng'] = number_format($sum);
+
+        if ($sum == 0) {
+            $infoBooking['Tổng cộng'] = 0;
+        }
+
+        $result = [$rooms, $infoBooking];
+        return $result;
+    }
+
     public function getRoomsEmptyRecall($id, $acction)
     {
         $checkIn = Session::get('checkIn');
@@ -31,12 +98,11 @@ class RoomRepository extends EloquentRepository implements RoomRepositoryInterfa
             ->with('category')->get();
 
         $key = "room" . $id;
-        if($acction == 'add'){
+        if ($acction == 'add') {
             if (!Session::has($key)) {
                 Session::put($key, $id);
             }
-        }
-        else{
+        } else {
             Session::forget($key);
         }
 
@@ -53,7 +119,7 @@ class RoomRepository extends EloquentRepository implements RoomRepositoryInterfa
                 $category_id = $room_info->category_id;
                 $price = Category::findOrFail($category_id);
                 $price = $price->price_day;
-                $infoBooking[$name] = number_format($price)." x ".$days.' (ngày)';
+                $infoBooking[$name] = number_format($price) . " x " . $days . ' (ngày)';
                 $sum += ($price * $days);
             }
         }

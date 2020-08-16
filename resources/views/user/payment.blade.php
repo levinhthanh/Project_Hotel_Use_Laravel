@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sunrise Sapa - Thông tin khách hàng</title>
+    <title>Sunrise Sapa - Thanh toán</title>
     <link rel="stylesheet" href="{{ asset('libs/node_modules/bootstrap/dist/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fontawesome/css/all.css') }}">
 
@@ -42,7 +42,7 @@
                     <td>
                         <div class="row">
                             <i class="fas fa-chevron-circle-right pr-1" id="step3_icon"
-                                style="font-size: 2vw; color:darkorange;"></i>
+                                style="font-size: 2vw; color:darkgray;"></i>
                             <a href="{{ route('confirm_info') }}" class="text-reset text-decoration-none">
                                 <p>THÔNG TIN KHÁCH HÀNG</p>
                             </a>
@@ -51,7 +51,7 @@
                     <td>
                         <div class="row">
                             <i class="fas fa-chevron-circle-right pr-1" id="step4_icon"
-                                style="font-size: 2vw; color:darkgray;"></i>
+                                style="font-size: 2vw; color:darkorange;"></i>
                             <p>THANH TOÁN</p>
                         </div>
                     </td>
@@ -60,47 +60,25 @@
         </div>
 
         <div class="container justify-content-center">
-            <p class="container h5 text-center pb-2" style="color: darkred">Xin mời quý khách nhập thông tin cá nhân để
-                được phục vụ nhanh chóng:</p>
-            <div class="container error-message">
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li style='color:red'>{{ $error }}</li>
-                            @endforeach
-                        </ul>
+            <p class="container h5 text-center pb-2" style="color: darkred">Qúy khách vui lòng chọn hình thức thanh
+                toán:</p>
+            <div class="container justify-content-center">
+            <form action="{{route('finish_booking')}}" method="post">
+                    @csrf
+                    <select id="selectPayment" onchange="getAccount()" class="container form-control w-50 text-center" name="payment">
+                        <option value="money">Tiền mặt</option>
+                        <option value="banking">Chuyển khoản</option>
+                        <option value="wallet">Ví điện tử</option>
+                    </select>
+                    <div class="container text-center">
+                        <p class="mt-3" style="color: darkturquoise" id="paymentContent"></p>
+                        <input class="btn w-25 mt-3" style="background-color: darkorange;color:white; border:none;"
+                            type="submit" value="XÁC NHẬN">
                     </div>
-                @endif
+                </form>
             </div>
 
-            <p style='color:green'>{{ isset($success) ? $success : '' }}</p>
-            <form action="{{ route('validate_customer') }}" method="POST">
-                @csrf
-                <table class="table  table-borderless container w-50">
-                    <thead>
-                        <tr>
-                            <th class="form-control pt-3">Tên quý khách</th>
-                        <td><input class="form-control" type="text" name="name" value="{{$name ?? ""}}" placeholder="Tên" required></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th class="form-control pt-3">Số điện thoại</th>
-                            <td><input class="form-control" type="text" name="phone" value="{{$phone ?? ""}}" placeholder="Điện thoại" required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="form-control pt-3">Email</th>
-                            <td><input class="form-control" type="email" name="email" value="{{$email ?? ""}}" placeholder="Email" required></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="container text-center">
-                    <button class="w-25 btn btn-success" style="background-color: darkorange; border:none;">XÁC NHẬN
-                        THÔNG TIN</button>
-                </div>
-            </form>
+
         </div>
 
 
@@ -115,7 +93,7 @@
 <script src="{{ asset('libs/node_modules/jquery/dist/jquery.js') }}"></script>
 {{-- Bootstrap --}}
 <script src="{{ asset('libs/node_modules/bootstrap/dist/js/bootstrap.js') }}"></script>
-
+<script src="{{ asset('js/payment.js') }}"></script>
 
 
 </html>

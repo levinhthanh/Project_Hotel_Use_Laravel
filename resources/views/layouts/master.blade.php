@@ -25,7 +25,7 @@
                 <nav class="row navbar navbar-expand-sm bg-light navbar-light w-100 ">
                     <ul class="navbar-nav d-flex justify-content-center w-100">
                         <li class="nav-item active mr-3">
-                            <a class="nav-link" href="#">TRANG CHỦ</a>
+                            <a class="nav-link" href="{{ route('welcome') }}">TRANG CHỦ</a>
                         </li>
                         <li class="nav-item active mr-3">
                             <a class="nav-link" href="#">GIỚI THIỆU</a>
@@ -52,52 +52,67 @@
                     <p class="text-danger">28 Nguyễn Tri Phương, Phú Hội, TP. Huế, Thừa Thiên Huế. Hotline:
                         (+84)999.999.999</p>
                 </div>
-            </div>
-            {{-- <div class="col-2 text-center w-100 pt-1">
-                <div class="dropdown">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        <i class="fas fa-user-circle"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                        @if (Auth::check())
-                            <label class="dropdown-item" id="account_control">
-                                Hi,<span id="user_name">{{ Auth::user()->name }}</span>
-                                <i class="fas fa-circle" id="user_status"></i>
-                            </label>
-                            @if (Auth::user()->type === 'Admin')
+                <div class="d-flex justify-content-end pr-5">
+                    @php
+                    if(Auth::check()){
+                    $display_link = 'block';
+                    }
+                    else {
+                    $display_link = 'none';
+                    }
+                    @endphp
+                    <div class="col-2 text-center w-100 pt-1" style="display: {{ $display_link }}">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <i class="fas fa-user-circle"></i>
+                            </button>
+                            <div class="dropdown-menu">
+
+                                <label class="dropdown-item" id="account_control">
+                                    Hi,<span id="user_name">{{ Auth::user()->name ?? '' }}</span>
+                                    <i class="fas fa-circle" id="user_status"></i>
+                                </label>
+
                                 <a class="dropdown-item" id="account_control" href="{{ route('admin_page') }}">Trang
                                     quản
                                     trị</a>
-                            @endif
-                            <form action="{{ route('logout') }}" method="post">
-                                @csrf
-                                <input type="submit" class="dropdown-item" id="account_control" value="Đăng xuất">
-                            </form>
-                            @if (!Auth::user()->type === 'Admin')
-                                <a class="dropdown-item" id="account_control" href="#">Liên hệ</a>
-                            @endif
-                            <span class="dropdown-item-text" id="label_account_text">T-services hotel</span>
-                            @else
-                            <a class="dropdown-item" id="account_control" href="{{ route('login') }}">Đăng nhập</a>
-                            <a class="dropdown-item" id="account_control" href="{{ route('register') }}">Đăng ký</a>
-                            <a class="dropdown-item" id="account_control" href="#">Liên hệ</a>
-                            <span class="dropdown-item-text" id="label_account_text">T-services hotel</span>
-                        @endif
+
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <input type="submit" class="dropdown-item" id="account_control" value="Đăng xuất">
+                                </form>
+
+                                <span class="dropdown-item-text" id="label_account_text">T-services hotel</span>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
+
         </div>
     </div>
 
     @yield('content')
 
     <div class="footer">
-        <div class="in_out">
-            <div id="t_service">
-                <a id="social_network" href=""><i class="fab fa-facebook-square"></i></a>
-                <a id="social_network" href=""><i class="fab fa-youtube"></i></a>
-                <a id="social_network" href=""><i class="fab fa-twitter"></i></a>
-                <a id="social_network" href=""><i class="fab fa-instagram"></i></a>
+        <div class="in_out justify-content-center" style="display: flex">
+            <div class="w-50 footer_left">
+                <p class="h4 pb-1 pt-3" style="color: darkorange">SUNRISE SAPA HOTEL</p>
+                <p class="text">Địa chỉ: 28 Nguyễn Tri Phương, Phú Hội, TP. Huế, Thừa Thiên Huế</p>
+                <p class="text">Hotline: (+84)999.999.999</p>
+                <div id="t_service">
+                    <a id="social_network" href=""><i class="fab fa-facebook-square"></i></a>
+                    <a id="social_network" href=""><i class="fab fa-youtube"></i></a>
+                    <a id="social_network" href=""><i class="fab fa-twitter"></i></a>
+                    <a id="social_network" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer_right">
+                <p class="h4 pb-1 pt-3" style="color: darkorange">Chính sách của chúng tôi</p>
+                <p class="text">- Phục vụ tận tình, chu đáo</p>
+                <p class="text">- Mang lại dịch vụ nghĩ dưỡng tốt nhất cho khách hàng</p>
+                <p class="text">- Luôn luôn lắng nghe và cải tiến chất lượng dịch vụ</p>
             </div>
         </div>
     </div>

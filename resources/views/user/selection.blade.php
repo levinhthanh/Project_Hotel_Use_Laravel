@@ -25,7 +25,7 @@
                         <div class="row">
                             <i class="fas fa-chevron-circle-right pr-1" id="step1_icon"
                                 style="font-size: 2vw; color:darkgray;"></i>
-                            <a href="{{ route('view_booking_page') }}">
+                            <a href="{{ route('view_booking_page') }}" class="text-reset text-decoration-none">
                                 <p>THÔNG TIN ĐẶT PHÒNG</p>
                             </a>
                         </div>
@@ -34,14 +34,18 @@
                         <div class="row">
                             <i class="fas fa-chevron-circle-right pr-1" id="step2_icon"
                                 style="font-size: 2vw; color:darkorange;"></i>
-                            <p>CHỌN PHÒNG</p>
+                            <a href="{{ route('view_check_rooms') }}" class="text-reset text-decoration-none">
+                                <p>CHỌN PHÒNG</p>
+                            </a>
                         </div>
                     </td>
                     <td>
                         <div class="row">
                             <i class="fas fa-chevron-circle-right pr-1" id="step3_icon"
                                 style="font-size: 2vw; color:darkgray;"></i>
-                            <p>THÔNG TIN KHÁCH HÀNG</p>
+                            <a href="{{ route('confirm_info') }}" class="text-reset text-decoration-none">
+                                <p>THÔNG TIN KHÁCH HÀNG</p>
+                            </a>
                         </div>
                     </td>
                     <td>
@@ -137,7 +141,8 @@
 
                     </tbody>
                 </table>
-            <a href="{{route('confirm_info')}}" class="btn" style="background-color: darkorange; color:white;">XÁC NHẬN ĐẶT PHÒNG</a>
+                <a href="{{ route('confirm_info') }}" class="btn" style="background-color: darkorange; color:white;">XÁC
+                    NHẬN ĐẶT PHÒNG</a>
 
             </div>
         </div>

@@ -42,8 +42,19 @@ Route::prefix('/room')->group(function () {
     Route::delete('/{id}', 'AdminController@delete_room')->name('delete_room');
 });
 
-Route::prefix('/book')->group(function () {
-    Route::get('/checked/{id}', 'GuestController@checked')->name('checked');
+Route::prefix('/booking')->group(function () {
+    Route::get('/', 'EmployeeController@get_bookings')->name('get_bookings');
+    Route::get('/{id}', 'EmployeeController@get_booking')->name('get_booking');
+    Route::post('/update_booking', 'EmployeeController@update_booking')->name('update_booking');
+});
 
+Route::prefix('/receive')->group(function () {
+    Route::get('/', 'EmployeeController@get_receive')->name('get_receive');
+    Route::post('/update_receive', 'EmployeeController@update_receive')->name('update_receive');
+});
+
+Route::prefix('/repay')->group(function () {
+    Route::get('/', 'EmployeeController@get_repay')->name('get_repay');
+    Route::post('/update_repay', 'EmployeeController@update_repay')->name('update_repay');
 });
 

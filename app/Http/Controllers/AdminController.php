@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\EmployeeRequest;
 use App\Http\Requests\CategoryRequest;
@@ -35,11 +36,48 @@ class AdminController extends Controller
     // *
     // **
     // ***
+    // ****  QUẢN LÝ ĐẶT - NHẬN - TRẢ PHÒNG  *****
+    public function manager_booking()
+    {
+        if (Auth::check()) {
+            return view('admin.booking');
+        } else {
+            return view('auth.login');
+        }
+    }
+
+    public function manager_receive()
+    {
+
+        if (Auth::check()) {
+            return view('admin.receive');
+        } else {
+            return view('auth.login');
+        }
+    }
+
+    public function manager_repay()
+    {
+        if (Auth::check()) {
+            return view('admin.repay');
+        } else {
+            return view('auth.login');
+        }
+    }
+
+
+
+    // *
+    // **
+    // ***
     // ****  QUẢN LÝ PHÒNG  *****
     public function manager_room()
     {
-
-        return view('admin.room');
+        if (Auth::check()) {
+            return view('admin.room');
+        } else {
+            return view('auth.login');
+        }
     }
 
     public function delete_room($id)
@@ -95,8 +133,11 @@ class AdminController extends Controller
     // ****  QUẢN LÝ LOẠI PHÒNG  *****
     public function manager_category()
     {
-
-        return view('admin.category');
+        if (Auth::check()) {
+            return view('admin.category');
+        } else {
+            return view('auth.login');
+        }
     }
 
     public function get_categories()
@@ -159,8 +200,11 @@ class AdminController extends Controller
     // ****  QUẢN LÝ NHÂN VIÊN  *****
     public function manager_employee()
     {
-
-        return view('admin.employee');
+        if (Auth::check()) {
+            return view('admin.employee');
+        } else {
+            return view('auth.login');
+        }
     }
 
     public function get_employees()
