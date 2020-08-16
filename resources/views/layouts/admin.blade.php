@@ -55,13 +55,17 @@
             use App\Employee;
             if(Auth::user()->type == 'Admin'){
             $img = '/admin.jpg';
+            $display_role = 'block';
             }else {
+            $display_role = 'none';
             $user_id = Auth::user()->id;
             $employee_id = Employee::select('id')->where('user_id','=',$user_id)->get();
             $employee_id = $employee_id[0]->id;
             $employee = Employee::find($employee_id);
             $img = "/storage"."/".$employee->image;
             }
+
+
             @endphp
             <!-- Sidebar -->
             <div class="sidebar">
@@ -80,7 +84,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
 
-                        <li class="nav-item">
+                        <li class="nav-item" style="display: {{ $display_role }}">
                             <a href="{{ route('manager_employee') }}" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>Quản lý nhân viên</p>
@@ -116,7 +120,7 @@
                             </ul>
                         </li> --}}
 
-                        <li class="nav-item has-treeview">
+                        <li class="nav-item has-treeview" style="display: {{ $display_role }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
