@@ -3,7 +3,7 @@
 @section('title', 'Sunrise Sapa Hotel - Homepage')
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('css/welcome_page.css')}}">
+    <link rel="stylesheet" href="/css/welcome_page.css">
 
 
 
