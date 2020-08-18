@@ -3,7 +3,7 @@
 @section('title', 'Hạng phòng cho bạn')
 
 @section('css')
-    <link rel="stylesheet" href="./css/category_page.css">
+<link rel="stylesheet" href="{{asset('css/category_page.css')}}">
 
 
 
