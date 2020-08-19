@@ -51,41 +51,101 @@
                 </a>
             </div>
         </div>
-        {{-- <div class="container-fluid mt-4 mb-3 booking_room">
-            --}}
-            @php
-            if(!isset($checkIn)){
-            $checkIn = "";
-            }
-            if(!isset($checkOut)){
-            $checkOut = "";
-            }
-            @endphp
-            <div class="container w-75 mt-4 mb-3 justify-content-center div_booking">
-                <form action="{{ route('view_booking') }}" method="post" class="form_booking">
-                    @csrf
-                    <table class="container table table-borderless ">
-                        <tbody>
-                            <tr class="row pl-4 pr-4">
-                                <td class="col-4">
-                                    <label for="in" style="color: white;">Ngày nhận</label>
-                                    <input name="checkIn" id="dayIn" onchange="checkDayIn(this.value)" class="container"
-                                        type="date" value="{{ $checkIn }}">
-                                </td>
-                                <td class="col-4">
-                                    <label for="out" style="color: white;">Ngày trả</label>
-                                    <input name="checkOut" id="dayOut" onchange="checkDayOut(this.value)" class="container"
-                                        type="date" value="{{ $checkOut }}">
-                                </td>
-                                <td class="col-4">
-                                    <input class="container-fluid btn pt-3 button_book" type="submit" value="ĐẶT NGAY">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
-            </div>
-            {{-- </div> --}}
+
+        @php
+        if(!isset($checkIn)){
+        $checkIn = "";
+        }
+        if(!isset($checkOut)){
+        $checkOut = "";
+        }
+        @endphp
+        <div class="container w-75 mt-4 mb-3 justify-content-center div_booking">
+            <form action="{{ route('view_booking') }}" method="post" class="form_booking">
+                @csrf
+                <table class="container table table-borderless ">
+                    <tbody>
+                        <tr class="row pl-4 pr-4">
+                            <td class="col-4">
+                                <label for="in" style="color: white;">Ngày nhận</label>
+                                <input name="checkIn" id="dayIn" onchange="checkDayIn(this.value)" class="container"
+                                    type="date" value="{{ $checkIn }}">
+                            </td>
+                            <td class="col-4">
+                                <label for="out" style="color: white;">Ngày trả</label>
+                                <input name="checkOut" id="dayOut" onchange="checkDayOut(this.value)" class="container"
+                                    type="date" value="{{ $checkOut }}">
+                            </td>
+                            <td class="col-4">
+                                <input class="container-fluid btn pt-3 button_book" type="submit" value="ĐẶT NGAY">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+
+        <div class="container w-75 mt-4 mb-3 justify-content-center div_booking_hidden">
+            <form action="{{ route('view_booking') }}" method="post" class="form_booking">
+                @csrf
+                <table class="container table table-borderless ">
+                    <tbody>
+                        <tr class="row pl-4 pr-4">
+                            <td class="col-6">
+                                <label for="in" style="color: white;">Ngày nhận</label>
+                                <input name="checkIn" id="dayIn" onchange="checkDayIn(this.value)" class="container"
+                                    type="date" value="{{ $checkIn }}">
+                            </td>
+                            <td class="col-6">
+                                <label for="out" style="color: white;">Ngày trả</label>
+                                <input name="checkOut" id="dayOut" onchange="checkDayOut(this.value)" class="container"
+                                    type="date" value="{{ $checkOut }}">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="container jusstify-content-center">
+                    <input class="container btn button_book_hidden mb-3" type="submit" value="ĐẶT NGAY">
+                </div>
+            </form>
+        </div>
+
+        <div class="container w-75 mt-4 mb-3 justify-content-center div_booking_hidden2">
+            <form action="{{ route('view_booking') }}" method="post" class="form_booking">
+                @csrf
+                <table class="container table table-borderless ">
+                    <tbody>
+                        <tr class="row pl-4 pr-4">
+                            <td class="col-12">
+                                <label for="in" style="color: white;">Ngày nhận</label>
+                                <input name="checkIn" id="dayIn" onchange="checkDayIn(this.value)" class="container"
+                                    type="date" value="{{ $checkIn }}">
+                            </td>
+                        </tr>
+                        <tr class="row pl-4 pr-4">
+                            <td class="col-12">
+                                <label for="out" style="color: white;">Ngày trả</label>
+                                <input name="checkOut" id="dayOut" onchange="checkDayOut(this.value)" class="container"
+                                    type="date" value="{{ $checkOut }}">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="container jusstify-content-center">
+                    <input class="container btn button_book_hidden mb-3" type="submit" value="ĐẶT NGAY">
+                </div>
+            </form>
+        </div>
+
+        <div class="container w-75 mt-4 mb-3 justify-content-center div_booking_hidden3">
+            <form action="{{ route('view_booking') }}" method="post" class="pt-3 form_booking">
+                @csrf
+                <div class="container jusstify-content-center">
+                    <input class="container btn button_book_hidden mb-3" type="submit" value="ĐẶT NGAY">
+                </div>
+            </form>
+        </div>
+
     </div>
 
 

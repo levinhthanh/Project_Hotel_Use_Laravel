@@ -26,6 +26,30 @@ padding: 0.7vw;
     background-color: white;
 
 }
+
+@media only screen and (max-width: 800px){
+    .category {
+        width: 90% ;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 15px;
+    }
+    #categories_list{
+        display: grid !important;
+        grid-template-columns: auto auto;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .category {
+        width: 90% ;
+        margin-bottom: 15px;
+    }
+    #categories_list{
+        display: grid !important;
+        grid-template-columns: auto;
+    }
+}
 .category_image{
     width: 100%;
     padding-top: 1vw;
@@ -64,8 +88,69 @@ padding: 0.7vw;
     height: 100% !important;
     font-size: 6vw;
 }
+
 .div_booking{
     background-color: #212529;
+}
+/* BOOKING HIDDEN */
+.div_booking_hidden{
+    display: none;
+    background-color: #212529;
+}
+.button_book_hidden{
+    background-color: darkred !important;
+    color: white !important;
+
+    width: 100% !important;
+    font-size: 6vw;
+}
+
+/* BOOKING HIDDEN 2 */
+.div_booking_hidden2{
+    display: none;
+    background-color: #212529;
+}
+
+
+/* BOOKING HIDDEN 3 */
+.div_booking_hidden3{
+    display: none;
+    background-color: #212529;
+}
+
+
+@media only screen and (max-width: 960px){
+    .div_booking{
+        display: none;
+    }
+    .div_booking_hidden{
+        display: block;
+    }
+}
+@media only screen and (max-width: 760px){
+    .div_booking{
+        display: none;
+    }
+    .div_booking_hidden{
+        display: none;
+    }
+    .div_booking_hidden2{
+        display: block;
+    }
+}
+@media only screen and (max-width: 410px){
+    .div_booking{
+        display: none;
+    }
+    .div_booking_hidden{
+        display: none;
+    }
+    .div_booking_hidden2{
+        display: none;
+    }
+    .div_booking_hidden3{
+        display: block;
+    }
 }
 
 
