@@ -200,5 +200,5 @@
 
 
 @section('javascript')
-    <script src="{{ asset('libs/node_modules/jquery/dist/jquery.js') }}"></script>
+    <script src="/libs/node_modules/jquery/dist/jquery.js"></script>
     <script src="/js/welcome_page.js"></script>
