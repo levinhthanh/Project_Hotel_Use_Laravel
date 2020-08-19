@@ -194,6 +194,27 @@
             </div>
         </div>
     </div>
+    <div class="footer_hidden">
+        <div class="in_out_hidden">
+            <div class="footer_left ml-5">
+                <p class="h4 pb-1 pt-3" style="color: darkorange">SUNRISE SAPA HOTEL</p>
+                <p class="text">Địa chỉ: 28 Nguyễn Tri Phương, Phú Hội, TP. Huế, Thừa Thiên Huế</p>
+                <p class="text">Hotline: (+84)999.999.999</p>
+                <div id="t_service">
+                    <a id="social_network" href=""><i class="fab fa-facebook-square"></i></a>
+                    <a id="social_network" href=""><i class="fab fa-youtube"></i></a>
+                    <a id="social_network" href=""><i class="fab fa-twitter"></i></a>
+                    <a id="social_network" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer_right ml-5">
+                <p class="h4 pb-1 pt-3" style="color: darkorange">Chính sách của chúng tôi</p>
+                <p class="text">- Phục vụ tận tình, chu đáo</p>
+                <p class="text">- Mang lại dịch vụ nghĩ dưỡng tốt nhất cho khách hàng</p>
+                <p class="text">- Luôn luôn lắng nghe và cải tiến chất lượng dịch vụ</p>
+            </div>
+        </div>
+    </div>
 
 </body>
 
