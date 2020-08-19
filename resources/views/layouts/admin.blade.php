@@ -201,6 +201,12 @@
                                         <p>Trả phòng</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('manager_print_bill') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>In hóa đơn</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 

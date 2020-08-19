@@ -65,6 +65,15 @@ class AdminController extends Controller
         }
     }
 
+    public function manager_print_bill()
+    {
+        // if (Auth::check()) {
+        //     return view('admin.repay');
+        // } else {
+        //     return view('auth.login');
+        // }
+    }
+
 
 
     // *

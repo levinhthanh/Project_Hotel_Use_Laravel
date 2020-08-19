@@ -6,10 +6,6 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
-
-
-
-
 // USER ROUTE
 Route::get('/home', function () {
     return view('welcome');
@@ -43,8 +39,8 @@ Route::prefix('/admin')->group(function () {
     Route::get('/booking', 'AdminController@manager_booking')->name('manager_booking');
     Route::get('/receive', 'AdminController@manager_receive')->name('manager_receive');
     Route::get('/repay', 'AdminController@manager_repay')->name('manager_repay');
+    Route::get('/print', 'AdminController@manager_print_bill')->name('manager_print_bill');
 });
 
 
-// Route::get('/home', 'HomeController@index')->name('home');
-        // if(Auth::user()->type === 'Admin'){
+
