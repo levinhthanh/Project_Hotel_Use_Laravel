@@ -50,11 +50,23 @@ html, body {
 }
 
 .header_hotel{
-    background-color: #f8f9fa!important;;
+    background-color: #f8f9fa!important;
+}
+.header_hotel_hidden{
+    display: none;
+    background-color: #f8f9fa!important;
 }
 #logo_page{
     width: 200px;
     height: auto;
     text-align: center;
+}
+@media only screen and (max-width: 750px){
+    .header_hotel{
+        display: none;
+    }
+    .header_hotel_hidden{
+        display: block;
+    }
 }
 

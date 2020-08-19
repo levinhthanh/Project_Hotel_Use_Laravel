@@ -92,6 +92,84 @@
 
         </div>
     </div>
+    <div class="container-fluid header_hotel_hidden">
+        <div class="row justify-content-center">
+            <div class="col-4 text-center w-100">
+                <img src="{{ asset('./images/logo/logo_hotel.gif') }}" class="container" id="logo_page" alt="logo">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <nav class="row navbar navbar-expand-sm bg-light navbar-light w-100 ">
+                    <ul class="navbar-nav d-flex justify-content-center w-100">
+                        <li class="nav-item active mr-3">
+                            <a class="nav-link" href="{{ route('welcome') }}">TRANG CHỦ</a>
+                        </li>
+                        <li class="nav-item active mr-3">
+                            <a class="nav-link" href="#">GIỚI THIỆU</a>
+                        </li>
+                        <li class="nav-item active mr-3">
+                            <a class="nav-link" href="{{ route('view_categories') }}">HẠNG PHÒNG</a>
+                        </li>
+                        <li class="nav-item active mr-3">
+                            <a class="nav-link" href="#">BÀI VIẾT</a>
+                        </li>
+                        <li class="nav-item active mr-3">
+                            <a class="nav-link" href="#">CÁ NHÂN</a>
+                        </li>
+                        <li class="nav-item active mr-3">
+                            <a class="nav-link" href="#">KHUYẾN MÃI</a>
+                        </li>
+                        <li class="nav-item active mr-3">
+                            <a class="nav-link" href="#">LIÊN HỆ</a>
+                        </li>
+
+                    </ul>
+                </nav>
+                <div class="d-flex justify-content-end pr-5">
+                    <p class="text-danger">28 Nguyễn Tri Phương, Phú Hội, TP. Huế, Thừa Thiên Huế. Hotline:
+                        (+84)999.999.999</p>
+                </div>
+                <div class="d-flex justify-content-end pr-5">
+                    @php
+                    if(Auth::check()){
+                    $display_link = 'block';
+                    }
+                    else {
+                    $display_link = 'none';
+                    }
+                    @endphp
+                    <div class="col-2 text-center w-100 pt-1" style="display: {{ $display_link }}">
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <i class="fas fa-user-circle"></i>
+                            </button>
+                            <div class="dropdown-menu">
+
+                                <label class="dropdown-item" id="account_control">
+                                    Hi,<span id="user_name">{{ Auth::user()->name ?? '' }}</span>
+                                    <i class="fas fa-circle" id="user_status"></i>
+                                </label>
+
+                                <a class="dropdown-item" id="account_control" href="{{ route('admin_page') }}">Trang
+                                    quản
+                                    trị</a>
+
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <input type="submit" class="dropdown-item" id="account_control" value="Đăng xuất">
+                                </form>
+
+                                <span class="dropdown-item-text" id="label_account_text">T-services hotel</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     @yield('content')
 

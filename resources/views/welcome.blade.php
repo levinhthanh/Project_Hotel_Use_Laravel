@@ -84,7 +84,6 @@
                 </table>
             </form>
         </div>
-
         <div class="container w-75 mt-4 mb-3 justify-content-center div_booking_hidden">
             <form action="{{ route('view_booking') }}" method="post" class="form_booking">
                 @csrf
@@ -109,7 +108,6 @@
                 </div>
             </form>
         </div>
-
         <div class="container w-75 mt-4 mb-3 justify-content-center div_booking_hidden2">
             <form action="{{ route('view_booking') }}" method="post" class="form_booking">
                 @csrf
@@ -136,7 +134,6 @@
                 </div>
             </form>
         </div>
-
         <div class="container w-75 mt-4 mb-3 justify-content-center div_booking_hidden3">
             <form action="{{ route('view_booking') }}" method="post" class="pt-3 form_booking">
                 @csrf
@@ -145,56 +142,17 @@
                 </div>
             </form>
         </div>
-
     </div>
-
 
     <div class="container-fluid categories_cover mt-3 pt-5 pb-5">
         <div class="d-flex justify-content-around" id="categories_list">
-
+            {{-- Nội dung sẽ được js trả ngược lên --}}
         </div>
         <div class="icon_view_categories text-right mt-3 pr-3">
             <a href="{{ route('view_categories') }}">Xem thêm</a>
             <a href="{{ route('view_categories') }}"><i class="fas fa-angle-double-right"></i></a>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @endsection
 
