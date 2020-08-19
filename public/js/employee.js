@@ -11,7 +11,7 @@ employee.showEmployees = function () {
                 $('#tbEmployee tbody').append(
                     `<tr>
                             <td>${value.id}</td>
-                            <td><img src="public/storage/${value.image}" style="width:60px; height: 70px;"></td>
+                            <td><img src="/storage/${value.image}" style="width:60px; height: 70px;"></td>
                             <td>${value.name}</td>
                             <td>${value.birthday}</td>
                             <td>${value.gender}</td>
