@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AdminLogin;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,13 +26,9 @@ Route::post('/finish', 'GuestController@finish_booking')->name('finish_booking')
 
 
 // ADMIN ROUTE
-Route::prefix('/admin')->group(function () {
+Route::prefix('/admin')->middleware('adminLogin')->group(function () {
     Route::get('/', function () {
-        if (Auth::check()) {
-            return view('admin.home');
-        } else {
-            return view('auth.login');
-        }
+        return view('admin.home');
     })->name('admin_page');
     Route::get('/employee', 'AdminController@manager_employee')->name('manager_employee');
     Route::get('/category', 'AdminController@manager_category')->name('manager_category');
@@ -41,6 +38,3 @@ Route::prefix('/admin')->group(function () {
     Route::get('/repay', 'AdminController@manager_repay')->name('manager_repay');
     Route::get('/print', 'AdminController@manager_print_bill')->name('manager_print_bill');
 });
-
-
-
