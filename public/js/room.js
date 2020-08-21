@@ -165,9 +165,9 @@ function get_rooms() {
                             <td>${value.id}</td>
                             <td>${value.name}</td>
                             <td>${value.category.name}</td>
-                            <td><img src="/storage/${value.image1}" style="width:70px; height: auto;"></td>
-                            <td><img src="/storage/${value.image2}" style="width:70px; height: auto;"></td>
-                            <td><img src="/storage/${value.image3}" style="width:70px; height: auto;"></td>
+                            <td><img src="/${value.image1}" style="width:70px; height: auto;"></td>
+                            <td><img src="/${value.image2}" style="width:70px; height: auto;"></td>
+                            <td><img src="/${value.image3}" style="width:70px; height: auto;"></td>
                             <td>${value.using}</td>
                             <td>
                                 <a href="javascript:;" class="btn" style="color:#696969; background-color: #FFFF00 !important;"

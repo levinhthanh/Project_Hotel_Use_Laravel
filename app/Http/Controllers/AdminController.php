@@ -234,8 +234,10 @@ class AdminController extends Controller
     {
         $id = $request->id;
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $image = $image->store('images', 'public');
+            $imagePath = $request->file('image');
+            $imageName = substr(md5(time()), 0, 10) . '1.' . $imagePath->getClientOriginalExtension();
+            $path = $imagePath->move('images/employees', $imageName)->getPathname();
+            $image = $path;
         }
         $employee = [
             'address' => $request->address,
@@ -278,8 +280,9 @@ class AdminController extends Controller
             $possition = $request->possition;
             $salary = $request->salary;
             if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $path = $image->store('images', 'public');
+                $imagePath = $request->file('image');
+                $imageName = substr(md5(time()), 0, 10) . '1.' . $imagePath->getClientOriginalExtension();
+                $path = $imagePath->move('images/employees', $imageName)->getPathname();
                 $image = $path;
             }
             $user_id = User::select('id')->where('email', $email)->first();

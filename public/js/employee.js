@@ -11,7 +11,7 @@ employee.showEmployees = function () {
                 $('#tbEmployee tbody').append(
                     `<tr>
                             <td>${value.id}</td>
-                            <td><img src="/storage/${value.image}" style="width:60px; height: 70px;"></td>
+                            <td><img src="/${value.image}" style="width:60px; height: 70px;"></td>
                             <td>${value.name}</td>
                             <td>${value.birthday}</td>
                             <td>${value.gender}</td>
@@ -147,7 +147,7 @@ employee.get = function (id) {
                 $("#phoneEdit").val(data.phone);
                 $("#possitionEdit").val(data.possition);
                 $("#salaryEdit").val(data.salary);
-                var avatar = (data.image != null && data.image != "") ? "/storage/" + data.image : "images/nonavatar.png";
+                var avatar = (data.image != null && data.image != "") ? "/" + data.image : "images/nonavatar.png";
                 $("#editAvatar").attr("src", avatar);
                 document.getElementById('table_status_update').innerHTML = "";
                 $("#editEmployee").modal('show');

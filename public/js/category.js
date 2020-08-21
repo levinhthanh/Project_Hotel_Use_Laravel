@@ -160,11 +160,11 @@ function loadCategory(id) {
             <tr>
                 <td>Hình ảnh</td>
                 <td>
-                    <img src="/storage/${data[0].image1}" style="width:30%; height: auto;"
+                    <img src="/${data[0].image1}" style="width:30%; height: auto;"
                         alt="" class="mr-2">
-                    <img src="/storage/${data[0].image2}" style="width:30%; height: auto;"
+                    <img src="/${data[0].image2}" style="width:30%; height: auto;"
                         alt="" class="mr-2">
-                    <img src="/storage/${data[0].image3}" style="width:30%; height: auto;"
+                    <img src="/${data[0].image3}" style="width:30%; height: auto;"
                         alt="">
                 </td>
             </tr>
@@ -188,11 +188,11 @@ function loadCategory(id) {
             $("#description1_edit").val(data[0].description1);
             $("#description2_edit").val(data[0].description2);
             $("#description3_edit").val(data[0].description3);
-            var img1 = "/storage/" + data[0].image1;
+            var img1 = "/" + data[0].image1;
             $("#editImage1").attr("src", img1);
-            var img2 = "/storage/" + data[0].image2;
+            var img2 = "/" + data[0].image2;
             $("#editImage2").attr("src", img2);
-            var img3 = "/storage/" + data[0].image3;
+            var img3 = "/" + data[0].image3;
             $("#editImage3").attr("src", img3);
             var action = `
             <a href="javascript:;" class="btn btn-success"

@@ -166,19 +166,22 @@ class RoomRepository extends EloquentRepository implements RoomRepositoryInterfa
             'using' => $request->status
         ];
         if ($request->hasFile('image1')) {
-            $image1 = $request->file('image1');
-            $image1 = $image1->store('rooms', 'public');
-            $room['image1'] = $image1;
+            $imagePath = $request->file('image1');
+            $imageName = substr(md5(time()), 0, 10) . '1.' . $imagePath->getClientOriginalExtension();
+            $path = $imagePath->move('images/rooms', $imageName)->getPathname();
+            $room['image1'] = $path;
         }
         if ($request->hasFile('image2')) {
-            $image2 = $request->file('image2');
-            $image2 = $image2->store('rooms', 'public');
-            $room['image2'] = $image2;
+            $imagePath = $request->file('image2');
+            $imageName = substr(md5(time()), 0, 10) . '2.' . $imagePath->getClientOriginalExtension();
+            $path = $imagePath->move('images/rooms', $imageName)->getPathname();
+            $room['image2'] = $path;
         }
         if ($request->hasFile('image3')) {
-            $image3 = $request->file('image3');
-            $image3 = $image3->store('rooms', 'public');
-            $room['image3'] = $image3;
+            $imagePath = $request->file('image3');
+            $imageName = substr(md5(time()), 0, 10) . '3.' . $imagePath->getClientOriginalExtension();
+            $path = $imagePath->move('images/rooms', $imageName)->getPathname();
+            $room['image3'] = $path;
         }
 
         $update = new RoomRepository;
@@ -226,18 +229,21 @@ class RoomRepository extends EloquentRepository implements RoomRepositoryInterfa
         $category = $request->category;
 
         if ($request->hasFile('image1')) {
-            $image1 = $request->file('image1');
-            $path = $image1->store('rooms', 'public');
-            $image1 = $path;
-        }
-        if ($request->hasFile('image2')) {
-            $image2 = $request->file('image2');
-            $path = $image2->store('rooms', 'public');
+            $imagePath = $request->file('image2');
+            $imageName = substr(md5(time()), 0, 10) . '1.' . $imagePath->getClientOriginalExtension();
+            $path = $imagePath->move('images/rooms', $imageName)->getPathname();
             $image2 = $path;
         }
+        if ($request->hasFile('image2')) {
+            $imagePath = $request->file('image1');
+            $imageName = substr(md5(time()), 0, 10) . '2.' . $imagePath->getClientOriginalExtension();
+            $path = $imagePath->move('images/rooms', $imageName)->getPathname();
+            $image1 = $path;
+        }
         if ($request->hasFile('image3')) {
-            $image3 = $request->file('image3');
-            $path = $image3->store('rooms', 'public');
+            $imagePath = $request->file('image3');
+            $imageName = substr(md5(time()), 0, 10) . '3.' . $imagePath->getClientOriginalExtension();
+            $path = $imagePath->move('images/rooms', $imageName)->getPathname();
             $image3 = $path;
         }
 
