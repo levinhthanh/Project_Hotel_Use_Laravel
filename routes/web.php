@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 Auth::routes();
+Auth::routes(['register' => false]);
 
 // USER ROUTE
 Route::get('/home', function () {
