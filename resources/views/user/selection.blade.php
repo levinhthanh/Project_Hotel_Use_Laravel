@@ -71,7 +71,7 @@
                         @foreach ($rooms as $key => $room)
                             <div class="container row selections pt-4 mb-2">
                                 <div class="col-4">
-                                    <img src="/storage/{{ $room->image1 }}" alt="" style="width:100%; height:auto;">
+                                    <img src="/{{ $room->image1 }}" alt="" style="width:100%; height:auto;">
                                 </div>
                                 <div class="col-8">
                                     <p class="h4">{{ $room->category->name }}</p>
