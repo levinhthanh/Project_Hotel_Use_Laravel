@@ -15,11 +15,11 @@
         <p class="text pl-3" style="color: darkorange;">Giá theo giờ: {{ number_format($category->price_hour) }} đồng/giờ</p>
         <p class="text pl-3" style="color: darkorange;">Giá theo ngày: {{ number_format($category->price_day) }} đồng/ngày</p>
         <p class="text">{{ $category->description1 }}</p>
-        <img class="w-75 pl-5 pr-5" src="/storage/{{ $category->image1 }}" alt="">
+        <img class="w-75 pl-5 pr-5" src="/{{ $category->image1 }}" alt="">
         <p class="text pr-3">{{ $category->description2 }}</p>
-        <img class="w-75 pl-5 pr-5" src="/storage/{{ $category->image2 }}" alt="">
+        <img class="w-75 pl-5 pr-5" src="/{{ $category->image2 }}" alt="">
         <p class="text">{{ $category->description3 }}</p>
-        <img class="w-75 pl-5 pr-5" src="/storage/{{ $category->image3 }}" alt="">
+        <img class="w-75 pl-5 pr-5" src="/{{ $category->image3 }}" alt="">
     </div>
 
 

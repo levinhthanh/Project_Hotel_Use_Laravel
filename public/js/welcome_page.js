@@ -11,7 +11,7 @@ function load_categories() {
                 if (i < 4) {
                     $('#categories_list').append(`
                                   <div class="category">
-                                      <img class="category_image" src="/storage/${value.image1}" alt="image">
+                                      <img class="category_image" src="/${value.image1}" alt="image">
                                       <div class="container html_a_cover">
                                           <a class="html_a" href="/category/${value.id}">${value.name}</a>
                                       </div>
