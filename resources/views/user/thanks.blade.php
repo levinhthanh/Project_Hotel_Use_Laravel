@@ -69,6 +69,10 @@
             </p>
         </div>
 
+        <div class="container text-center">
+            <a href="{{ route('welcome') }}">Quay lại trang chủ</a>
+        </div>
+
     </div>
 
 
